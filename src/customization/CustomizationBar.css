@@ -1,4 +1,10 @@
 .CustomizationBar {
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+}
+
+.CustomizationNav {
     background-color: aquamarine;
     display: flex;
     align-items: stretch;
