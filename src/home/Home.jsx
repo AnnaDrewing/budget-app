@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import CustomizationBar from "../customization/CustomizationBar";
 import ExpenseSummary from "../expenseReport/ExpenseReport";
 import ExpensesSoFar from "./ExpensesSoFar";
+import { Typography } from "@mui/material";
+import { useState } from "react";
 
 export default function Home() {
   const navigate = useNavigate();

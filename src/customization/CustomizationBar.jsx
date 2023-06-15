@@ -3,8 +3,9 @@ import { RxFontSize, RxFontFamily } from "react-icons/rx";
 import { CgDarkMode } from "react-icons/cg";
 import "./CustomizationBar.css";
 import { useState } from "react";
+import FontSize from "./FontSize";
 
-export default function CustomizationBar() {
+export default function CustomizationBar({ updateFontSize, updateFont }) {
   const [showingCurrency, setShowingCurrency] = useState(false);
   const [showingFontFamily, setShowingFontFamily] = useState(false);
   const [showingFontSize, setShowingFontSize] = useState(false);
@@ -66,7 +67,7 @@ export default function CustomizationBar() {
       )}
       {showingFontSize && (
         <div style={{ backgroundColor: "green" }}>
-          <p>Customize the font size</p>
+          <FontSize updateFontSize={updateFontSize} />
         </div>
       )}
       {showingTheme && (
