@@ -5,6 +5,7 @@ import ExpenseSummary from "../expenseReport/ExpenseReport";
 import ExpensesSoFar from "./ExpensesSoFar";
 import { Typography } from "@mui/material";
 import { useState } from "react";
+import Button from "@mui/material/Button";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -13,8 +14,12 @@ export default function Home() {
     <>
       <h1>This is the home page</h1>
       <ExpensesSoFar />
-      <button onClick={() => navigate("/add")}>Add Expense</button>
-      <button onClick={() => navigate("/report")}>Get Report</button>
+      <Button onClick={() => navigate("/add")} variant="contained">
+        Add Expense
+      </Button>
+      <Button onClick={() => navigate("/report")} variant="outlined">
+        Get Report
+      </Button>
 
       {/* Crediting the icons */}
       <p>

@@ -4,6 +4,7 @@ import { CgDarkMode } from "react-icons/cg";
 import "./CustomizationBar.css";
 import { useState } from "react";
 import FontSize from "./FontSize";
+import FontFamily from "./FontFamily";
 
 export default function CustomizationBar({ updateFontSize, updateFont }) {
   const [showingCurrency, setShowingCurrency] = useState(false);
@@ -62,7 +63,7 @@ export default function CustomizationBar({ updateFontSize, updateFont }) {
       )}
       {showingFontFamily && (
         <div style={{ backgroundColor: "violet" }}>
-          <p>Customize the font family</p>
+          <FontFamily updateFont={updateFont} />
         </div>
       )}
       {showingFontSize && (

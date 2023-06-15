@@ -125,9 +125,7 @@ export default function AddExpense({ addExpense }) {
       <Button disabled={!priceIsValid} onClick={newExpense} variant="contained">
         Add Expense
       </Button>
-      <Button onClick={() => navigate(-1)} variant="outlined">
-        Back
-      </Button>
+      <Button onClick={() => navigate(-1)}>Back</Button>
     </>
   );
 }
