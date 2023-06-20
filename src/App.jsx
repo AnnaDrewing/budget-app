@@ -10,6 +10,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
 
 function App() {
   const [expenseList, setExpenseList] = useState([]);
@@ -50,16 +51,20 @@ function App() {
     <ThemeProvider theme={userTheme}>
       <CssBaseline />
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <CustomizationBar
-          updateFontSize={updateFontSize}
-          updateFont={updateFont}
-          updateCurrency={updateCurrency}
-          updateTheme={updateTheme}
-        />
-        <div
+        <Box
           className="App"
-          style={{ fontSize: userFontSize, fontFamily: userFont }}
+          style={{
+            fontSize: userFontSize,
+            fontFamily: userFont,
+            borderColor: userTheme.palette.primary.main,
+          }}
         >
+          <CustomizationBar
+            updateFontSize={updateFontSize}
+            updateFont={updateFont}
+            updateCurrency={updateCurrency}
+            updateTheme={updateTheme}
+          />
           <BrowserRouter>
             <Routes>
               <Route exact path="/" element={<Home />} />
@@ -76,7 +81,7 @@ function App() {
               <Route exact path="/report" element={<ExpenseReport />} />
             </Routes>
           </BrowserRouter>
-        </div>
+        </Box>
       </LocalizationProvider>
     </ThemeProvider>
   );

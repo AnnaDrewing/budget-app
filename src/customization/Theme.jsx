@@ -5,6 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useState } from "react";
+import { blue, yellow, red } from "@mui/material/colors";
 
 export default function Theme({ updateTheme }) {
   const [userTheme, setUserTheme] = useState("light");
@@ -19,6 +20,7 @@ export default function Theme({ updateTheme }) {
       mode: "light",
     },
   });
+
   const handleChange = (evt) => {
     const newTheme = evt.target.value;
     if (evt.target.value === "light") {
