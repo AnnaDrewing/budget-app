@@ -7,8 +7,14 @@ import { useState } from "react";
 import FontSize from "./FontSize";
 import FontFamily from "./FontFamily";
 import Currency from "./Currency";
+import Theme from "./Theme";
 
-export default function CustomizationBar({ updateFontSize, updateFont, updateCurrency }) {
+export default function CustomizationBar({
+  updateFontSize,
+  updateFont,
+  updateCurrency,
+  updateTheme,
+}) {
   const [showingCurrency, setShowingCurrency] = useState(false);
   const [showingFontFamily, setShowingFontFamily] = useState(false);
   const [showingFontSize, setShowingFontSize] = useState(false);
@@ -59,7 +65,7 @@ export default function CustomizationBar({ updateFontSize, updateFont, updateCur
           style={{ backgroundColor: "red" }}
           onClick={toggleCurrencySetting}
         >
-          <BsCurrencyExchange/>
+          <BsCurrencyExchange />
         </div>
         <div
           className="navIcon"
@@ -100,7 +106,7 @@ export default function CustomizationBar({ updateFontSize, updateFont, updateCur
       )}
       {showingTheme && (
         <div className="settingBlock" style={{ backgroundColor: "yellow" }}>
-          <p>Customize the theme</p>
+          <Theme updateTheme={updateTheme} />
         </div>
       )}
     </div>
