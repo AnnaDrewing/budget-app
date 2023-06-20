@@ -6,8 +6,9 @@ import "./CustomizationBar.css";
 import { useState } from "react";
 import FontSize from "./FontSize";
 import FontFamily from "./FontFamily";
+import Currency from "./Currency";
 
-export default function CustomizationBar({ updateFontSize, updateFont }) {
+export default function CustomizationBar({ updateFontSize, updateFont, updateCurrency }) {
   const [showingCurrency, setShowingCurrency] = useState(false);
   const [showingFontFamily, setShowingFontFamily] = useState(false);
   const [showingFontSize, setShowingFontSize] = useState(false);
@@ -84,12 +85,12 @@ export default function CustomizationBar({ updateFontSize, updateFont }) {
       </div>
       {showingCurrency && (
         <div className="settingBlock" style={{ backgroundColor: "red" }}>
-          <p>Customize the currency</p>
+          <Currency className="settingForm" updateCurrency={updateCurrency} />
         </div>
       )}
       {showingFontFamily && (
         <div className="settingBlock" style={{ backgroundColor: "violet" }}>
-          <FontFamily updateFont={updateFont} />
+          <FontFamily className="settingForm" updateFont={updateFont} />
         </div>
       )}
       {showingFontSize && (

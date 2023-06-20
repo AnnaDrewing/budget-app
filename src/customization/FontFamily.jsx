@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -12,8 +13,8 @@ export default function FontFamily({ updateFont }) {
     updateFont(newFont);
   };
   return (
-    <FormControl>
-      <InputLabel id="font-label">Chose font</InputLabel>
+    <FormControl size="small" style={{width: '200px'}}>
+      <InputLabel id="font-label">Font</InputLabel>
       <Select
         labelId="font-label"
         id="font"

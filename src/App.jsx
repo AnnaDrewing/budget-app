@@ -8,12 +8,13 @@ import ExpenseReport from "./expenseReport/ExpenseReport";
 import { v4 as uuid } from "uuid";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { Typography } from "@mui/material";
 
 function App() {
   const [expenseList, setExpenseList] = useState([]);
   const [userFontSize, setUserFontSize] = useState("10px");
   const [userFont, setUserFont] = useState("Arial");
+  const [userCurrency, setUserCurency] = useState('€');
+
   const addExpense = (date, cat, money) => {
     console.log(expenseList);
     console.log("Category is: " + cat);
@@ -23,6 +24,9 @@ function App() {
       { id: uuid(), date: date, category: cat, price: money },
     ]);
   };
+  const updateCurrency = (currency) => {
+    setUserCurency(currency);
+  }
   const updateFontSize = (fontSize) => {
     setUserFontSize(fontSize);
   };
@@ -35,6 +39,7 @@ function App() {
       <CustomizationBar
         updateFontSize={updateFontSize}
         updateFont={updateFont}
+        updateCurrency={updateCurrency}
       />
       <div
         className="App"
@@ -46,7 +51,7 @@ function App() {
             <Route
               exact
               path="/add"
-              element={<AddExpense addExpense={addExpense} />}
+              element={<AddExpense userCurrency={userCurrency} addExpense={addExpense} />}
             />
             <Route exact path="/report" element={<ExpenseReport />} />
           </Routes>

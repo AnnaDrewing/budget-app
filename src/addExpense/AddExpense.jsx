@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -11,8 +13,9 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
 import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
+import './AddExpense.css';
 
-export default function AddExpense({ addExpense }) {
+export default function AddExpense({ addExpense, userCurrency }) {
   const navigate = useNavigate();
 
   const [category, setCategory] = useState("Other");
@@ -76,8 +79,7 @@ export default function AddExpense({ addExpense }) {
   };
 
   return (
-    <>
-      <h3>Here you can add your expenses</h3>
+    <div className="AddExpense">
       <DatePicker
         label="Pick the date"
         onChange={updateDate}
@@ -92,7 +94,7 @@ export default function AddExpense({ addExpense }) {
         onChange={updatePrice}
         onClick={clearThePriceField}
         InputProps={{
-          endAdornment: <InputAdornment position="end">€</InputAdornment>,
+          endAdornment: <InputAdornment position="end">{userCurrency}</InputAdornment>,
         }}
       />
       <FormControl>
@@ -122,10 +124,12 @@ export default function AddExpense({ addExpense }) {
       {operationSuccessful && (
         <Alert severity="success">Your expense has been added</Alert>
       )}
+      <div className="navigationButtons">
       <Button disabled={!priceIsValid} onClick={newExpense} variant="contained">
         Add Expense
       </Button>
       <Button onClick={() => navigate(-1)}>Back</Button>
-    </>
+      </div>
+    </div>
   );
 }

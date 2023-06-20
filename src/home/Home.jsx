@@ -1,10 +1,5 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
-import CustomizationBar from "../customization/CustomizationBar";
-import ExpenseSummary from "../expenseReport/ExpenseReport";
 import ExpensesSoFar from "./ExpensesSoFar";
-import { Typography } from "@mui/material";
-import { useState } from "react";
 import Button from "@mui/material/Button";
 
 export default function Home() {
