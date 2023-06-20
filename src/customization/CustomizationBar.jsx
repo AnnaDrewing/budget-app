@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { BsCurrencyExchange } from "react-icons/bs";
 import { RxFontSize, RxFontFamily } from "react-icons/rx";
 import { CgDarkMode } from "react-icons/cg";
@@ -11,18 +12,43 @@ export default function CustomizationBar({ updateFontSize, updateFont }) {
   const [showingFontFamily, setShowingFontFamily] = useState(false);
   const [showingFontSize, setShowingFontSize] = useState(false);
   const [showingTheme, setShowingTheme] = useState(false);
+  const [isSettingOpen, setIsSettingOpen] = useState(false);
 
-  const setCurrency = () => {
+  const toggleCurrencySetting = () => {
+    if (isSettingOpen) {
+      setShowingFontFamily(false);
+      setShowingFontSize(false);
+      setShowingTheme(false);
+    }
     setShowingCurrency(!showingCurrency);
+    setIsSettingOpen(!showingCurrency);
   };
-  const setFontFamily = () => {
+  const toggleFontFamilySetting = () => {
+    if (isSettingOpen) {
+      setShowingCurrency(false);
+      setShowingFontSize(false);
+      setShowingTheme(false);
+    }
     setShowingFontFamily(!showingFontFamily);
+    setIsSettingOpen(!showingFontFamily);
   };
-  const setFontSize = () => {
+  const toggleFontSizeSetting = () => {
+    if (isSettingOpen) {
+      setShowingCurrency(false);
+      setShowingFontFamily(false);
+      setShowingTheme(false);
+    }
     setShowingFontSize(!showingFontSize);
+    setIsSettingOpen(!showingFontSize);
   };
-  const setTheme = () => {
+  const toggleThemeSetting = () => {
+    if (isSettingOpen) {
+      setShowingCurrency(false);
+      setShowingFontSize(false);
+      setShowingFontFamily(false);
+    }
     setShowingTheme(!showingTheme);
+    setIsSettingOpen(!showingTheme);
   };
   return (
     <div className="CustomizationBar">
@@ -30,49 +56,49 @@ export default function CustomizationBar({ updateFontSize, updateFont }) {
         <div
           className="navIcon"
           style={{ backgroundColor: "red" }}
-          onClick={setCurrency}
+          onClick={toggleCurrencySetting}
         >
-          <BsCurrencyExchange />
+          <BsCurrencyExchange/>
         </div>
         <div
           className="navIcon"
           style={{ backgroundColor: "violet" }}
-          onClick={setFontFamily}
+          onClick={toggleFontFamilySetting}
         >
           <RxFontFamily />
         </div>
         <div
           className="navIcon"
           style={{ backgroundColor: "green" }}
-          onClick={setFontSize}
+          onClick={toggleFontSizeSetting}
         >
           <RxFontSize />
         </div>
         <div
           className="navIcon"
           style={{ backgroundColor: "yellow" }}
-          onClick={setTheme}
+          onClick={toggleThemeSetting}
         >
           <CgDarkMode />
         </div>
       </div>
       {showingCurrency && (
-        <div style={{ backgroundColor: "red" }}>
+        <div className="settingBlock" style={{ backgroundColor: "red" }}>
           <p>Customize the currency</p>
         </div>
       )}
       {showingFontFamily && (
-        <div style={{ backgroundColor: "violet" }}>
+        <div className="settingBlock" style={{ backgroundColor: "violet" }}>
           <FontFamily updateFont={updateFont} />
         </div>
       )}
       {showingFontSize && (
-        <div style={{ backgroundColor: "green" }}>
+        <div className="settingBlock" style={{ backgroundColor: "green" }}>
           <FontSize updateFontSize={updateFontSize} />
         </div>
       )}
       {showingTheme && (
-        <div style={{ backgroundColor: "yellow" }}>
+        <div className="settingBlock" style={{ backgroundColor: "yellow" }}>
           <p>Customize the theme</p>
         </div>
       )}
