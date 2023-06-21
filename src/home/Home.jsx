@@ -1,14 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import ExpensesSoFar from "./ExpensesSoFar";
 import Button from "@mui/material/Button";
+import LastFewExpenses from "./LastFewExpenses";
 
-export default function Home() {
+export default function Home({ expenseList }) {
   const navigate = useNavigate();
 
   return (
     <>
-      <h1>This is the home page</h1>
-      <ExpensesSoFar />
+      <LastFewExpenses expenseList={expenseList} />
       <Button onClick={() => navigate("/add")} variant="contained">
         Add Expense
       </Button>
