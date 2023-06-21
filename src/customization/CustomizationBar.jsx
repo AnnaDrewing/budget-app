@@ -11,6 +11,7 @@ import Theme from "./Theme";
 
 export default function CustomizationBar({
   updateFontSize,
+  defaultFontSize,
   updateFont,
   updateCurrency,
   updateTheme,
@@ -101,7 +102,10 @@ export default function CustomizationBar({
       )}
       {showingFontSize && (
         <div className="settingBlock" style={{ backgroundColor: "green" }}>
-          <FontSize updateFontSize={updateFontSize} />
+          <FontSize
+            updateFontSize={updateFontSize}
+            defaultFontSize={defaultFontSize}
+          />
         </div>
       )}
       {showingTheme && (

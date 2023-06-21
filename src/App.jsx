@@ -14,7 +14,7 @@ import Box from "@mui/material/Box";
 
 function App() {
   const [expenseList, setExpenseList] = useState([]);
-  const [userFontSize, setUserFontSize] = useState("10px");
+  const [userFontSize, setUserFontSize] = useState("15px");
   const [userFont, setUserFont] = useState("Arial");
   const [userCurrency, setUserCurency] = useState("€");
   const [userTheme, setUserTheme] = useState(
@@ -37,8 +37,10 @@ function App() {
   const updateCurrency = (currency) => {
     setUserCurency(currency);
   };
+  let fontSizePx = userFontSize + "px";
   const updateFontSize = (fontSize) => {
     setUserFontSize(fontSize);
+    fontSizePx = fontSize + "px";
   };
   const updateFont = (font) => {
     setUserFont(font);
@@ -61,6 +63,7 @@ function App() {
         >
           <CustomizationBar
             updateFontSize={updateFontSize}
+            defaultFontSize={userFontSize}
             updateFont={updateFont}
             updateCurrency={updateCurrency}
             updateTheme={updateTheme}

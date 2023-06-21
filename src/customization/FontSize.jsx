@@ -1,34 +1,45 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import Slider from "@mui/material/Slider";
-import Typography from '@mui/material/Typography';
+import Typography from "@mui/material/Typography";
 
-export default function FontSize({ updateFontSize }) {
-  const [fontSize, setFontSize] = useState(10);
+export default function FontSize({ updateFontSize, defaultFontSize }) {
+  // changing font size from string to int
+  let defaultFont = 0;
+  defaultFont = parseInt(
+    defaultFontSize.substring(0, defaultFontSize.length - 2)
+  );
+  // font size as state here must be an integer
+  const [fontSize, setFontSize] = useState(defaultFont);
   const handleChange = (evt, newValue) => {
     setFontSize(newValue);
+    // font size as state in the app must be a string with 'px' at the end
     updateFontSize(newValue + "px");
   };
   const marks = [
     {
       value: 10,
-      label: '10',
+      label: "10",
     },
     {
       value: 25,
-      label: '25',
-    }
+      label: "25",
+    },
   ];
   return (
     <>
-    <Typography id="font-size-slider" gutterBottom>
+      <Typography
+        style={{ fontSize: "1em" }}
+        id="font-size-slider"
+        gutterBottom
+      >
         Font size:
       </Typography>
-      <Slider style={{width: '200px'}}
+      <Slider
+        style={{ width: "200px" }}
         size="small"
         id="font-size-slider"
         aria-label="Custom marks"
-        defaultValue={3}
         value={fontSize}
         valueLabelDisplay="auto"
         step={1}
