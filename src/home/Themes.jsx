@@ -9,6 +9,9 @@ export const lightTheme = createTheme({
     tab3: "#90caf9",
     tab4: "#64b5f6",
   },
+  shape: {
+    borderRadius: 1,
+  },
 });
 
 export const darkTheme = createTheme({
@@ -19,5 +22,8 @@ export const darkTheme = createTheme({
     tab2: "#1565c0",
     tab3: "#1976d2",
     tab4: "#1e88e5",
+  },
+  shape: {
+    borderRadius: 1,
   },
 });

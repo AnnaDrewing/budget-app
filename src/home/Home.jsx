@@ -8,25 +8,14 @@ export default function Home({ expenseList }) {
   return (
     <>
       <LastFewExpenses expenseList={expenseList} />
-      <Button onClick={() => navigate("/add")} variant="contained">
-        Add Expense
-      </Button>
-      <Button onClick={() => navigate("/report")} variant="outlined">
-        Get Report
-      </Button>
-
-      {/* Crediting the icons */}
-      <p>
-        <a
-          href="https://www.flaticon.com/free-icons/currency"
-          title="currency icons"
-        >
-          Currency icons created by Eucalyp - Flaticon
-        </a>
-        <a href="https://www.flaticon.com/free-icons/font" title="font icons">
-          Font icons created by Smashicons - Flaticon
-        </a>
-      </p>
+      <div className="NavigationButtons">
+        <Button onClick={() => navigate("/add")} variant="contained">
+          Add Expense
+        </Button>
+        <Button onClick={() => navigate("/report")} variant="outlined">
+          Get Report
+        </Button>
+      </div>
     </>
   );
 }

@@ -1,11 +1,9 @@
 .CustomizationBar {
-    background-color: beige;
     display: flex;
     flex-direction: column;
 }
 
 .CustomizationNav {
-    background-color: aquamarine;
     display: flex;
     align-items: stretch;
     height: 30px;
@@ -19,6 +17,10 @@
 }
 
 .settingBlock {
+    position: fixed; 
+    z-index: 4;
+    top: 34px;
+    width: 391px;
     display: flex;
     flex-direction: column;
     align-items: center;
