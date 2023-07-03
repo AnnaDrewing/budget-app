@@ -66,35 +66,38 @@ export default function CustomizationBar({
       <div className="CustomizationNav">
         <div
           className="navIcon"
-          style={{ backgroundColor: "red" }}
+          style={{ backgroundColor: userTheme.palette.tab1 }}
           onClick={toggleCurrencySetting}
         >
           <BsCurrencyExchange />
         </div>
         <div
           className="navIcon"
-          style={{ backgroundColor: "violet" }}
+          style={{ backgroundColor: userTheme.palette.tab2 }}
           onClick={toggleFontFamilySetting}
         >
           <RxFontFamily />
         </div>
         <div
           className="navIcon"
-          style={{ backgroundColor: "green" }}
+          style={{ backgroundColor: userTheme.palette.tab3 }}
           onClick={toggleFontSizeSetting}
         >
           <RxFontSize />
         </div>
         <div
           className="navIcon"
-          style={{ backgroundColor: "yellow" }}
+          style={{ backgroundColor: userTheme.palette.tab4 }}
           onClick={toggleThemeSetting}
         >
           <CgDarkMode />
         </div>
       </div>
       {showingCurrency && (
-        <div className="settingBlock" style={{ backgroundColor: "red" }}>
+        <div
+          className="settingBlock"
+          style={{ backgroundColor: userTheme.palette.tab1 }}
+        >
           <Currency
             className="settingForm"
             updateCurrency={updateCurrency}
@@ -103,7 +106,10 @@ export default function CustomizationBar({
         </div>
       )}
       {showingFontFamily && (
-        <div className="settingBlock" style={{ backgroundColor: "violet" }}>
+        <div
+          className="settingBlock"
+          style={{ backgroundColor: userTheme.palette.tab2 }}
+        >
           <FontFamily
             className="settingForm"
             updateFont={updateFont}
@@ -112,7 +118,10 @@ export default function CustomizationBar({
         </div>
       )}
       {showingFontSize && (
-        <div className="settingBlock" style={{ backgroundColor: "green" }}>
+        <div
+          className="settingBlock"
+          style={{ backgroundColor: userTheme.palette.tab3 }}
+        >
           <FontSize
             updateFontSize={updateFontSize}
             userFontSize={userFontSize}
@@ -120,7 +129,10 @@ export default function CustomizationBar({
         </div>
       )}
       {showingTheme && (
-        <div className="settingBlock" style={{ backgroundColor: "yellow" }}>
+        <div
+          className="settingBlock"
+          style={{ backgroundColor: userTheme.palette.tab4 }}
+        >
           <Theme updateTheme={updateTheme} userTheme={userTheme} />
         </div>
       )}
