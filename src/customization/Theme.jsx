@@ -12,13 +12,13 @@ export default function Theme({ updateTheme, userTheme }) {
   console.log(userTheme);
 
   const handleChange = (evt) => {
-    const newTheme = evt.target.value;
-    if (evt.target.value === "light-theme") {
+    if (evt.target.value === "lightTheme") {
       updateTheme(lightTheme);
+      setTheme(lightTheme);
     } else {
       updateTheme(darkTheme);
+      setTheme(darkTheme);
     }
-    setTheme(newTheme);
   };
 
   return (
@@ -33,8 +33,8 @@ export default function Theme({ updateTheme, userTheme }) {
           label="Theme"
           onChange={handleChange}
         >
-          <MenuItem value="light-theme">Light</MenuItem>
-          <MenuItem value="dark-theme">Dark</MenuItem>
+          <MenuItem value="lightTheme">Light</MenuItem>
+          <MenuItem value="darkTheme">Dark</MenuItem>
         </Select>
       </FormControl>
     </>
