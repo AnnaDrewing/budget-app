@@ -13,7 +13,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
 import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
-import './AddExpense.css';
+import "./AddExpense.css";
 
 export default function AddExpense({ addExpense, userCurrency }) {
   const navigate = useNavigate();
@@ -67,7 +67,7 @@ export default function AddExpense({ addExpense, userCurrency }) {
     console.log(
       "Adding new expense of category + " + category + ", and of price " + price
     );
-    addExpense(date, category, price);
+    addExpense(date, category, price, userCurrency);
     setDefaultPrice();
     setDefaultCategory();
     setPriceIsValid(true);
@@ -94,7 +94,9 @@ export default function AddExpense({ addExpense, userCurrency }) {
         onChange={updatePrice}
         onClick={clearThePriceField}
         InputProps={{
-          endAdornment: <InputAdornment position="end">{userCurrency}</InputAdornment>,
+          endAdornment: (
+            <InputAdornment position="end">{userCurrency}</InputAdornment>
+          ),
         }}
       />
       <FormControl>
@@ -125,10 +127,14 @@ export default function AddExpense({ addExpense, userCurrency }) {
         <Alert severity="success">Your expense has been added</Alert>
       )}
       <div className="navigationButtons">
-      <Button disabled={!priceIsValid} onClick={newExpense} variant="contained">
-        Add Expense
-      </Button>
-      <Button onClick={() => navigate(-1)}>Back</Button>
+        <Button
+          disabled={!priceIsValid}
+          onClick={newExpense}
+          variant="contained"
+        >
+          Add Expense
+        </Button>
+        <Button onClick={() => navigate(-1)}>Back</Button>
       </div>
     </div>
   );

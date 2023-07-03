@@ -3,12 +3,10 @@ import { useState } from "react";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
 
-export default function FontSize({ updateFontSize, defaultFontSize }) {
+export default function FontSize({ updateFontSize, userFontSize }) {
   // changing font size from string to int
   let defaultFont = 0;
-  defaultFont = parseInt(
-    defaultFontSize.substring(0, defaultFontSize.length - 2)
-  );
+  defaultFont = parseInt(userFontSize.substring(0, userFontSize.length - 2));
   // font size as state here must be an integer
   const [fontSize, setFontSize] = useState(defaultFont);
   const handleChange = (evt, newValue) => {

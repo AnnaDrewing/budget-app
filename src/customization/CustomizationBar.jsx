@@ -11,10 +11,13 @@ import Theme from "./Theme";
 
 export default function CustomizationBar({
   updateFontSize,
-  defaultFontSize,
+  userFontSize,
   updateFont,
+  userFont,
   updateCurrency,
+  userCurrency,
   updateTheme,
+  userTheme,
 }) {
   const [showingCurrency, setShowingCurrency] = useState(false);
   const [showingFontFamily, setShowingFontFamily] = useState(false);
@@ -92,25 +95,33 @@ export default function CustomizationBar({
       </div>
       {showingCurrency && (
         <div className="settingBlock" style={{ backgroundColor: "red" }}>
-          <Currency className="settingForm" updateCurrency={updateCurrency} />
+          <Currency
+            className="settingForm"
+            updateCurrency={updateCurrency}
+            userCurrency={userCurrency}
+          />
         </div>
       )}
       {showingFontFamily && (
         <div className="settingBlock" style={{ backgroundColor: "violet" }}>
-          <FontFamily className="settingForm" updateFont={updateFont} />
+          <FontFamily
+            className="settingForm"
+            updateFont={updateFont}
+            userFont={userFont}
+          />
         </div>
       )}
       {showingFontSize && (
         <div className="settingBlock" style={{ backgroundColor: "green" }}>
           <FontSize
             updateFontSize={updateFontSize}
-            defaultFontSize={defaultFontSize}
+            userFontSize={userFontSize}
           />
         </div>
       )}
       {showingTheme && (
         <div className="settingBlock" style={{ backgroundColor: "yellow" }}>
-          <Theme updateTheme={updateTheme} />
+          <Theme updateTheme={updateTheme} userTheme={userTheme} />
         </div>
       )}
     </div>

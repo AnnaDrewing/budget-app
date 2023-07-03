@@ -71,29 +71,33 @@ export default function LastFewExpenses({ expenseList }) {
   return (
     <>
       {noLoggedExpenses && <p>You have added no expenses so far</p>}
-      <TableContainer size="small" component={Paper}>
-        <Table size="small" aria-label="a dense table">
-          <TableHead className="tableHeader">
-            <TableRow>
-              <StyledTableCell>Price</StyledTableCell>
-              <StyledTableCell align="right">Category</StyledTableCell>
-              <StyledTableCell align="right">Date</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={uuid()}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <StyledTableCell align="right">{row.price}</StyledTableCell>
-                <StyledTableCell align="right">{row.category}</StyledTableCell>
-                <StyledTableCell align="right">{row.date}</StyledTableCell>
+      {!noLoggedExpenses && (
+        <TableContainer size="small" component={Paper}>
+          <Table size="small" aria-label="a dense table">
+            <TableHead className="tableHeader">
+              <TableRow>
+                <StyledTableCell>Price</StyledTableCell>
+                <StyledTableCell align="right">Category</StyledTableCell>
+                <StyledTableCell align="right">Date</StyledTableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow
+                  key={uuid()}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <StyledTableCell align="right">{row.price}</StyledTableCell>
+                  <StyledTableCell align="right">
+                    {row.category}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">{row.date}</StyledTableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </>
   );
 }

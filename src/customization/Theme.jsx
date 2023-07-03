@@ -1,34 +1,24 @@
 /* eslint-disable react/prop-types */
-import { createTheme } from "@mui/material/styles";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useState } from "react";
-import { blue, yellow, red } from "@mui/material/colors";
+import { lightTheme, darkTheme } from "../home/Themes";
 
-export default function Theme({ updateTheme }) {
-  const [userTheme, setUserTheme] = useState("light");
-  //Theme
-  const darkTheme = createTheme({
-    palette: {
-      mode: "dark",
-    },
-  });
-  const lightTheme = createTheme({
-    palette: {
-      mode: "light",
-    },
-  });
+export default function Theme({ updateTheme, userTheme }) {
+  const [theme, setTheme] = useState(userTheme);
+  console.log("Current theme is: " + userTheme);
+  console.log(userTheme);
 
   const handleChange = (evt) => {
     const newTheme = evt.target.value;
-    if (evt.target.value === "light") {
+    if (evt.target.value === "light-theme") {
       updateTheme(lightTheme);
     } else {
       updateTheme(darkTheme);
     }
-    setUserTheme(newTheme);
+    setTheme(newTheme);
   };
 
   return (
@@ -38,13 +28,13 @@ export default function Theme({ updateTheme }) {
         <Select
           labelId="theme-label"
           id="theme"
-          value={userTheme}
-          name="font"
-          label="Font"
+          value={theme.name}
+          name="theme"
+          label="Theme"
           onChange={handleChange}
         >
-          <MenuItem value="light">Light</MenuItem>
-          <MenuItem value="dark">Dark</MenuItem>
+          <MenuItem value="light-theme">Light</MenuItem>
+          <MenuItem value="dark-theme">Dark</MenuItem>
         </Select>
       </FormControl>
     </>
