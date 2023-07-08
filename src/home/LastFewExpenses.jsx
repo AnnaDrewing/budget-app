@@ -10,11 +10,7 @@ import { styled } from "@mui/material/styles";
 import { v4 as uuid } from "uuid";
 
 export default function LastFewExpenses({ expenseList }) {
-  const rows = [
-    // createData(4.99, "Other", "27 Jun 2023"),
-    // createData(4.99, "Entertainment", "27 Jun 2023"),
-    // createData(4.99, "Other", "27 Jun 2023"),
-  ];
+  const rows = [];
   expenseList.forEach((element) => {
     const day = element.date["$D"];
     const monthArr = [
@@ -36,12 +32,14 @@ export default function LastFewExpenses({ expenseList }) {
     const year = element.date["$y"];
     const fullDate = day + " " + monthName + " " + year;
     const category = element.category;
-    const price = element.price;
+    const price = element.price + element.currency;
     console.log(
       "Date: " + fullDate + ", category: " + category + ", price: " + price
     );
     rows.push(createData(price, category, fullDate));
   });
+
+  let lastThreeExpenses = rows.slice(-3);
 
   const noLoggedExpenses = expenseList.length < 1 ? true : false;
   function createData(price, category, date) {
@@ -73,6 +71,7 @@ export default function LastFewExpenses({ expenseList }) {
       {noLoggedExpenses && <p>You have added no expenses so far</p>}
       {!noLoggedExpenses && (
         <TableContainer size="small" component={Paper}>
+          <h3>You recent expenses: </h3>
           <Table size="small" aria-label="a dense table">
             <TableHead className="tableHeader">
               <TableRow>
@@ -82,7 +81,7 @@ export default function LastFewExpenses({ expenseList }) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
+              {lastThreeExpenses.map((row) => (
                 <TableRow
                   key={uuid()}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}

@@ -21,10 +21,6 @@ function App() {
   const [userTheme, setUserTheme] = useState(lightTheme);
 
   const addExpense = (date, category, price, currency) => {
-    console.log(expenseList);
-    console.log("Category is: " + category);
-    console.log("Price is: " + price);
-    console.log("Currency is: " + currency);
     setExpenseList((oldExpenseList) => [
       ...oldExpenseList,
       {
@@ -90,7 +86,11 @@ function App() {
                   />
                 }
               />
-              <Route exact path="/report" element={<ExpenseReport />} />
+              <Route
+                exact
+                path="/report"
+                element={<ExpenseReport expenseList={expenseList} />}
+              />
             </Routes>
           </BrowserRouter>
         </Box>

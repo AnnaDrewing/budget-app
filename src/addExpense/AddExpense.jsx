@@ -19,7 +19,7 @@ export default function AddExpense({ addExpense, userCurrency }) {
   const navigate = useNavigate();
 
   const [category, setCategory] = useState("Other");
-  const [price, setPrice] = useState("0,00");
+  const [price, setPrice] = useState("0.00");
   const [priceIsValid, setPriceIsValid] = useState(false);
   const [date, setDate] = useState(dayjs("2023-01-01"));
   const [operationSuccessful, setOperationSuccessful] = useState(false);
@@ -35,7 +35,7 @@ export default function AddExpense({ addExpense, userCurrency }) {
   };
 
   const setDefaultPrice = () => {
-    setPrice("0,00");
+    setPrice("0.00");
   };
 
   const clearThePriceField = () => {
@@ -48,13 +48,11 @@ export default function AddExpense({ addExpense, userCurrency }) {
   };
 
   const validatePrice = (price) => {
-    const regex = new RegExp("^\\d+(,\\d{1,2})$", "g");
+    const regex = new RegExp("^\\d+(\\.\\d{1,2})$", "g");
     if (regex.test(price)) {
       setPriceIsValid(true);
-      console.log("Price is valid");
     } else {
       setPriceIsValid(false);
-      console.log("Price is invalid");
     }
   };
 
@@ -64,9 +62,6 @@ export default function AddExpense({ addExpense, userCurrency }) {
   };
 
   const newExpense = () => {
-    console.log(
-      "Adding new expense of category + " + category + ", and of price " + price
-    );
     addExpense(date, category, price, userCurrency);
     setDefaultPrice();
     setDefaultCategory();
@@ -120,7 +115,7 @@ export default function AddExpense({ addExpense, userCurrency }) {
       </FormControl>
       {!priceIsValid && (
         <Alert severity="info">
-          Please make sure you use the valid price format, e.g. 9,99
+          Please make sure you use the valid price format, e.g. 9.99
         </Alert>
       )}
       {operationSuccessful && (
