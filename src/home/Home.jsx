@@ -8,7 +8,7 @@ export default function Home({ expenseList }) {
   return (
     <>
       <LastFewExpenses expenseList={expenseList} />
-      <div className="NavigationButtons">
+      <div className="navigationButtons">
         <Button onClick={() => navigate("/add")} variant="contained">
           Add Expense
         </Button>

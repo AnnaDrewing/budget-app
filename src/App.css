@@ -2,11 +2,10 @@
   border-width: 5px;
   border-style: solid;
   max-width: 400px;
-  height: 400px;
+  height: 450px;
   margin: 0 auto;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-bottom: 1rem;
 }

@@ -1,6 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import ListItemText from "@mui/material/ListItemText";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import "./ExpenseReport.css";
 
 export default function ExpenseReport({ expenseList }) {
   const navigate = useNavigate();
@@ -41,27 +47,40 @@ export default function ExpenseReport({ expenseList }) {
     expenseReportArray.push(object);
   });
 
-  categories.sort();
-  console.log(categories);
+  // sorting categories by names, alphabetically
+  expenseReportArray.sort((a, b) => {
+    const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+    const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
 
-  const list = expenseReportArray.forEach(() => <li>Hi</li>);
-  // return Object.keys(object).forEach((prop) => <li>{prop}</li>);
+    // names must be equal
+    return 0;
+  });
 
   return (
-    <>
-      <h3>Here is the report on your expenses</h3>
+    <div className="ExpenseReport">
+      {expenseReportArray.length == 0 && (
+        <h3>I kindly report that you have added no expenses so far.</h3>
+      )}
       {expenseReportArray.map((obj) => (
-        <>
-          <p>Here is the sum of your expenses in the category {obj.name}:</p>
+        <div className="expenseReportTable">
+          <div className="category">{obj.name}:</div>
           <ul>
             {obj["$"] && <li>{obj["$"]}$</li>}
             {obj["€"] && <li>{obj["€"]}€</li>}
             {obj["PLN"] && <li>{obj["PLN"]}PLN</li>}
             {obj["¥"] && <li>{obj["¥"]}¥</li>}
           </ul>
-        </>
+        </div>
       ))}
-      <Button onClick={() => navigate(-1)}>Back</Button>
-    </>
+      <Button onClick={() => navigate(-1)} variant="outlined">
+        Back
+      </Button>
+    </div>
   );
 }

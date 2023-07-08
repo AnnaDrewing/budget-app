@@ -13,6 +13,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
 import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import "./AddExpense.css";
 
 export default function AddExpense({ addExpense, userCurrency }) {
@@ -74,12 +75,13 @@ export default function AddExpense({ addExpense, userCurrency }) {
   };
 
   return (
-    <div className="AddExpense">
+    <Box className="AddExpense">
       <DatePicker
         label="Pick the date"
         onChange={updateDate}
         onClick={clearTheFeedback}
         value={date}
+        sx={{ flexGrow: "0" }}
       />
       <TextField
         label="Price"
@@ -93,8 +95,9 @@ export default function AddExpense({ addExpense, userCurrency }) {
             <InputAdornment position="end">{userCurrency}</InputAdornment>
           ),
         }}
+        sx={{ flexGrow: "0" }}
       />
-      <FormControl>
+      <FormControl sx={{ flexGrow: "0" }}>
         <InputLabel id="category-label">Category</InputLabel>
         <Select
           labelId="category-label"
@@ -131,6 +134,6 @@ export default function AddExpense({ addExpense, userCurrency }) {
         </Button>
         <Button onClick={() => navigate(-1)}>Back</Button>
       </div>
-    </div>
+    </Box>
   );
 }
