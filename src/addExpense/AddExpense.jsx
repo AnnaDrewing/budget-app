@@ -86,6 +86,7 @@ export default function AddExpense({
         onChange={updateDate}
         onClick={clearTheFeedback}
         value={date}
+        sx={{ margin: 3 }}
       />
       <TextField
         label="Price"
@@ -94,13 +95,14 @@ export default function AddExpense({
         value={price}
         onChange={updatePrice}
         onClick={clearThePriceField}
+        sx={{ margin: 3, marginTop: 0 }}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">{userCurrency}</InputAdornment>
           ),
         }}
       />
-      <FormControl>
+      <FormControl sx={{ margin: 3, marginTop: 0 }}>
         <InputLabel id="category-label">Category</InputLabel>
         <Select
           labelId="category-label"
@@ -135,7 +137,7 @@ export default function AddExpense({
           Your expense has been added
         </Alert>
       )}
-      <div className="navigationButtons">
+      <Box sx={{ marginBottom: 3 }}>
         <Button
           disabled={!priceIsValid}
           onClick={newExpense}
@@ -150,7 +152,7 @@ export default function AddExpense({
         >
           Back
         </Button>
-      </div>
+      </Box>
     </Box>
   );
 }

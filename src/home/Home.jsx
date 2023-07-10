@@ -13,7 +13,7 @@ export default function Home({ expenseList, userFont, userFontSize }) {
         userFont={userFont}
         userFontSize={userFontSize}
       />
-      <Box className="navigationButtons">
+      <Box sx={{ marginBottom: 3 }}>
         <Button
           sx={{ fontFamily: userFont, fontSize: userFontSize }}
           onClick={() => navigate("/add")}

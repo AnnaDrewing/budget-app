@@ -79,7 +79,13 @@ export default function ExpenseReport({ expenseList, userFont, userFontSize }) {
         </div>
       ))}
       <Button
-        sx={{ fontFamily: userFont, fontSize: userFontSize }}
+        sx={{
+          fontFamily: userFont,
+          fontSize: userFontSize,
+          marginBottom: 3,
+          marginLeft: 3,
+          marginRight: 3,
+        }}
         onClick={() => navigate(-1)}
         variant="outlined"
       >
