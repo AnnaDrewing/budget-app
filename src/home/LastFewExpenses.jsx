@@ -8,6 +8,7 @@ import Paper from "@mui/material/Paper";
 import "./LastFewExpenses.css";
 import { styled } from "@mui/material/styles";
 import { v4 as uuid } from "uuid";
+import Box from "@mui/material/Box";
 
 export default function LastFewExpenses({
   expenseList,
@@ -72,48 +73,50 @@ export default function LastFewExpenses({
     <>
       {noLoggedExpenses && <p>You have added no expenses so far</p>}
       {!noLoggedExpenses && (
-        <TableContainer size="small" component={Paper}>
-          <h3>You recent expenses: </h3>
-          <Table size="small" aria-label="a dense table">
-            <TableHead className="tableHeader">
-              <TableRow>
-                <StyledTableCell
-                  sx={{ fontFamily: userFont, fontSize: userFontSize }}
-                >
-                  Price
-                </StyledTableCell>
-                <StyledTableCell
-                  sx={{ fontFamily: userFont, fontSize: userFontSize }}
-                  align="right"
-                >
-                  Category
-                </StyledTableCell>
-                <StyledTableCell
-                  sx={{ fontFamily: userFont, fontSize: userFontSize }}
-                  align="right"
-                >
-                  Date
-                </StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {lastThreeExpenses.map((row) => (
-                <TableRow
-                  key={uuid()}
-                  sx={{
-                    "&:last-child td, &:last-child th": { border: 0 },
-                  }}
-                >
-                  <StyledTableCell align="right">{row.price}</StyledTableCell>
-                  <StyledTableCell align="right">
-                    {row.category}
+        <Box sx={{ margin: "20px" }}>
+          <TableContainer size="small" component={Paper}>
+            <h3>You recent expenses: </h3>
+            <Table size="small" aria-label="a dense table">
+              <TableHead className="tableHeader">
+                <TableRow>
+                  <StyledTableCell
+                    sx={{ fontFamily: userFont, fontSize: userFontSize }}
+                  >
+                    Price
                   </StyledTableCell>
-                  <StyledTableCell align="right">{row.date}</StyledTableCell>
+                  <StyledTableCell
+                    sx={{ fontFamily: userFont, fontSize: userFontSize }}
+                    align="right"
+                  >
+                    Category
+                  </StyledTableCell>
+                  <StyledTableCell
+                    sx={{ fontFamily: userFont, fontSize: userFontSize }}
+                    align="right"
+                  >
+                    Date
+                  </StyledTableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <TableBody>
+                {lastThreeExpenses.map((row) => (
+                  <TableRow
+                    key={uuid()}
+                    sx={{
+                      "&:last-child td, &:last-child th": { border: 0 },
+                    }}
+                  >
+                    <StyledTableCell align="right">{row.price}</StyledTableCell>
+                    <StyledTableCell align="right">
+                      {row.category}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">{row.date}</StyledTableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Box>
       )}
     </>
   );

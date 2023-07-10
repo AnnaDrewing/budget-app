@@ -18,10 +18,10 @@
 
 .settingBlock {
     box-sizing: border-box;
-    position: fixed; 
+    position: sticky; 
     z-index: 2;
     top: 57px;
-    width: 334px;
+    width: 395px;
     display: flex;
     flex-direction: column;
     align-items: center;

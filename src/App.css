@@ -6,8 +6,8 @@
 .App {
   border-width: 3px;
   border-style: solid;
-  width: 340px;
-  height: 450px;
+  width: 400px;
+  height: 550px;
   margin: 20px auto;
   text-align: center;
   display: flex;
