@@ -20,7 +20,7 @@
     box-sizing: border-box;
     position: fixed; 
     z-index: 2;
-    top: 37px;
+    top: 57px;
     width: 334px;
     display: flex;
     flex-direction: column;
