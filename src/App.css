@@ -1,7 +1,12 @@
+:root {
+  position: relative;
+  z-index: 11;
+}
+
 .App {
-  border-width: 5px;
+  border-width: 3px;
   border-style: solid;
-  max-width: 30%;
+  width: 340px;
   height: 450px;
   margin: 0 auto;
   text-align: center;
@@ -9,4 +14,5 @@
   flex-direction: column;
   justify-content: space-between;
   overflow-y: auto;
+  overflow-x: hidden;
 }
