@@ -16,7 +16,12 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import "./AddExpense.css";
 
-export default function AddExpense({ addExpense, userCurrency }) {
+export default function AddExpense({
+  addExpense,
+  userCurrency,
+  userFont,
+  userFontSize,
+}) {
   const navigate = useNavigate();
 
   const [category, setCategory] = useState("Other");
@@ -81,7 +86,6 @@ export default function AddExpense({ addExpense, userCurrency }) {
         onChange={updateDate}
         onClick={clearTheFeedback}
         value={date}
-        sx={{ flexGrow: "0" }}
       />
       <TextField
         label="Price"
@@ -95,9 +99,8 @@ export default function AddExpense({ addExpense, userCurrency }) {
             <InputAdornment position="end">{userCurrency}</InputAdornment>
           ),
         }}
-        sx={{ flexGrow: "0" }}
       />
-      <FormControl sx={{ flexGrow: "0" }}>
+      <FormControl>
         <InputLabel id="category-label">Category</InputLabel>
         <Select
           labelId="category-label"
@@ -117,22 +120,36 @@ export default function AddExpense({ addExpense, userCurrency }) {
         </Select>
       </FormControl>
       {!priceIsValid && (
-        <Alert severity="info">
+        <Alert
+          sx={{ fontFamily: userFont, fontSize: userFontSize }}
+          severity="info"
+        >
           Please make sure you use the valid price format, e.g. 9.99
         </Alert>
       )}
       {operationSuccessful && (
-        <Alert severity="success">Your expense has been added</Alert>
+        <Alert
+          sx={{ fontFamily: userFont, fontSize: userFontSize }}
+          severity="success"
+        >
+          Your expense has been added
+        </Alert>
       )}
       <div className="navigationButtons">
         <Button
           disabled={!priceIsValid}
           onClick={newExpense}
           variant="contained"
+          sx={{ fontFamily: userFont, fontSize: userFontSize }}
         >
           Add Expense
         </Button>
-        <Button onClick={() => navigate(-1)}>Back</Button>
+        <Button
+          sx={{ fontFamily: userFont, fontSize: userFontSize }}
+          onClick={() => navigate(-1)}
+        >
+          Back
+        </Button>
       </div>
     </Box>
   );

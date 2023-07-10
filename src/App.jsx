@@ -35,10 +35,8 @@ function App() {
   const updateCurrency = (currency) => {
     setUserCurency(currency);
   };
-  let fontSizePx = userFontSize + "px";
   const updateFontSize = (fontSize) => {
     setUserFontSize(fontSize);
-    fontSizePx = fontSize + "px";
   };
   const updateFont = (font) => {
     setUserFont(font);
@@ -53,7 +51,7 @@ function App() {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Box
           className="App"
-          style={{
+          sx={{
             fontSize: userFontSize,
             fontFamily: userFont,
             borderColor: userTheme.palette.primary.main,
@@ -74,7 +72,13 @@ function App() {
               <Route
                 exact
                 path="/"
-                element={<Home expenseList={expenseList} />}
+                element={
+                  <Home
+                    expenseList={expenseList}
+                    userFont={userFont}
+                    userFontSize={userFontSize}
+                  />
+                }
               />
               <Route
                 exact
@@ -83,13 +87,21 @@ function App() {
                   <AddExpense
                     userCurrency={userCurrency}
                     addExpense={addExpense}
+                    userFont={userFont}
+                    userFontSize={userFontSize}
                   />
                 }
               />
               <Route
                 exact
                 path="/report"
-                element={<ExpenseReport expenseList={expenseList} />}
+                element={
+                  <ExpenseReport
+                    expenseList={expenseList}
+                    userFont={userFont}
+                    userFontSize={userFontSize}
+                  />
+                }
               />
             </Routes>
           </BrowserRouter>

@@ -125,6 +125,7 @@ export default function CustomizationBar({
           <FontSize
             updateFontSize={updateFontSize}
             userFontSize={userFontSize}
+            userFont={userFont}
           />
         </div>
       )}

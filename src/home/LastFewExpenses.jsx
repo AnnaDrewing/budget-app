@@ -9,7 +9,11 @@ import "./LastFewExpenses.css";
 import { styled } from "@mui/material/styles";
 import { v4 as uuid } from "uuid";
 
-export default function LastFewExpenses({ expenseList }) {
+export default function LastFewExpenses({
+  expenseList,
+  userFont,
+  userFontSize,
+}) {
   const rows = [];
   expenseList.forEach((element) => {
     const day = element.date["$D"];
@@ -33,9 +37,6 @@ export default function LastFewExpenses({ expenseList }) {
     const fullDate = day + " " + monthName + " " + year;
     const category = element.category;
     const price = element.price + element.currency;
-    console.log(
-      "Date: " + fullDate + ", category: " + category + ", price: " + price
-    );
     rows.push(createData(price, category, fullDate));
   });
 
@@ -53,7 +54,8 @@ export default function LastFewExpenses({ expenseList }) {
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {
-      fontSize: 14,
+      fontSize: userFontSize,
+      fontFamily: userFont,
     },
   }));
 
@@ -75,16 +77,32 @@ export default function LastFewExpenses({ expenseList }) {
           <Table size="small" aria-label="a dense table">
             <TableHead className="tableHeader">
               <TableRow>
-                <StyledTableCell>Price</StyledTableCell>
-                <StyledTableCell align="right">Category</StyledTableCell>
-                <StyledTableCell align="right">Date</StyledTableCell>
+                <StyledTableCell
+                  sx={{ fontFamily: userFont, fontSize: userFontSize }}
+                >
+                  Price
+                </StyledTableCell>
+                <StyledTableCell
+                  sx={{ fontFamily: userFont, fontSize: userFontSize }}
+                  align="right"
+                >
+                  Category
+                </StyledTableCell>
+                <StyledTableCell
+                  sx={{ fontFamily: userFont, fontSize: userFontSize }}
+                  align="right"
+                >
+                  Date
+                </StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {lastThreeExpenses.map((row) => (
                 <TableRow
                   key={uuid()}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  sx={{
+                    "&:last-child td, &:last-child th": { border: 0 },
+                  }}
                 >
                   <StyledTableCell align="right">{row.price}</StyledTableCell>
                   <StyledTableCell align="right">

@@ -7,8 +7,9 @@ import ListItemText from "@mui/material/ListItemText";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import "./ExpenseReport.css";
+import { v4 as uuid } from "uuid";
 
-export default function ExpenseReport({ expenseList }) {
+export default function ExpenseReport({ expenseList, userFont, userFontSize }) {
   const navigate = useNavigate();
 
   //Gather all different categories
@@ -19,7 +20,6 @@ export default function ExpenseReport({ expenseList }) {
       categories.push(currentCategory);
     }
   });
-  console.log("All categories: " + categories);
 
   //Add prices within the same category
   let expenseReportArray = [];
@@ -71,14 +71,18 @@ export default function ExpenseReport({ expenseList }) {
         <div className="expenseReportTable">
           <div className="category">{obj.name}:</div>
           <ul>
-            {obj["$"] && <li>{obj["$"]}$</li>}
-            {obj["€"] && <li>{obj["€"]}€</li>}
-            {obj["PLN"] && <li>{obj["PLN"]}PLN</li>}
-            {obj["¥"] && <li>{obj["¥"]}¥</li>}
+            {obj["$"] && <li key={uuid()}>{obj["$"]} $</li>}
+            {obj["€"] && <li key={uuid()}>{obj["€"]} €</li>}
+            {obj["PLN"] && <li key={uuid()}>{obj["PLN"]} PLN</li>}
+            {obj["¥"] && <li key={uuid()}>{obj["¥"]} ¥</li>}
           </ul>
         </div>
       ))}
-      <Button onClick={() => navigate(-1)} variant="outlined">
+      <Button
+        sx={{ fontFamily: userFont, fontSize: userFontSize }}
+        onClick={() => navigate(-1)}
+        variant="outlined"
+      >
         Back
       </Button>
     </div>

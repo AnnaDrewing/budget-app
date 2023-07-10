@@ -3,7 +3,7 @@ import { useState } from "react";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
 
-export default function FontSize({ updateFontSize, userFontSize }) {
+export default function FontSize({ updateFontSize, userFontSize, userFont }) {
   // changing font size from string to int
   let defaultFont = 0;
   defaultFont = parseInt(userFontSize.substring(0, userFontSize.length - 2));
@@ -30,10 +30,12 @@ export default function FontSize({ updateFontSize, userFontSize }) {
         style={{ fontSize: "1em" }}
         id="font-size-slider"
         gutterBottom
+        sx={{ fontFamily: userFont, fontSize: userFontSize }}
       >
         Font size:
       </Typography>
       <Slider
+        sx={{ fontFamily: userFont, fontSize: userFontSize }}
         style={{ width: "200px" }}
         size="small"
         id="font-size-slider"
