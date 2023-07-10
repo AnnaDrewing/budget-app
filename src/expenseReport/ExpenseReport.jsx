@@ -8,8 +8,14 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import "./ExpenseReport.css";
 import { v4 as uuid } from "uuid";
+import { useTheme } from "@mui/material/styles";
 
-export default function ExpenseReport({ expenseList, userFont, userFontSize }) {
+export default function ExpenseReport({
+  expenseList,
+  userFont,
+  userFontSize,
+  userTheme,
+}) {
   const navigate = useNavigate();
 
   //Gather all different categories
@@ -32,16 +38,17 @@ export default function ExpenseReport({ expenseList, userFont, userFontSize }) {
         if (!object.name) {
           // create a new object with this category/currency and value 0
           object.name = category;
-          object[currency] = 0;
+          object[currency] = 0.0;
         }
         // object of this category exists, but not with the current currency
         if (!object[currency]) {
-          object[currency] = 0;
+          object[currency] = 0.0;
         }
         // now the object with this category and currency definitely exsits
-        let currentPrice = parseFloat(expense.price);
+        let newValue = object[currency] + parseFloat(expense.price);
         // add the new value
-        object[currency] += currentPrice;
+        object[currency] = Math.round(newValue * 100) / 100;
+        object.id = uuid();
       }
     });
     expenseReportArray.push(object);
@@ -62,35 +69,76 @@ export default function ExpenseReport({ expenseList, userFont, userFontSize }) {
     return 0;
   });
 
+  const theme = useTheme();
+
   return (
-    <div className="ExpenseReport">
+    <Box className="ExpenseReport">
       {expenseReportArray.length == 0 && (
-        <h3>I kindly report that you have added no expenses so far.</h3>
+        <Box
+          sx={{
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around",
+          }}
+        >
+          <Typography
+            sx={{
+              padding: "3px",
+              margin: "15px",
+              color: theme.palette.text.primary,
+              letterSpacing: "3px",
+              fontSize: userFontSize,
+              fontFamily: userFont,
+            }}
+          >
+            I kindly report that you have added no expenses so far.
+          </Typography>
+        </Box>
       )}
-      {expenseReportArray.map((obj) => (
-        <div className="expenseReportTable">
-          <div className="category">{obj.name}:</div>
-          <ul>
-            {obj["$"] && <li key={uuid()}>{obj["$"]} $</li>}
-            {obj["€"] && <li key={uuid()}>{obj["€"]} €</li>}
-            {obj["PLN"] && <li key={uuid()}>{obj["PLN"]} PLN</li>}
-            {obj["¥"] && <li key={uuid()}>{obj["¥"]} ¥</li>}
-          </ul>
-        </div>
-      ))}
-      <Button
-        sx={{
-          fontFamily: userFont,
-          fontSize: userFontSize,
-          marginBottom: 3,
-          marginLeft: 3,
-          marginRight: 3,
-        }}
-        onClick={() => navigate(-1)}
-        variant="outlined"
-      >
-        Back
-      </Button>
-    </div>
+      <>
+        {expenseReportArray.map((obj) => (
+          <Box
+            className="expenseReportTable"
+            sx={{
+              boxShadow: `0.1px 0.1px 2px ${theme.palette.primary.main}`,
+              backgroundColor: theme.palette.background.paper,
+            }}
+          >
+            <Typography
+              sx={{
+                padding: "3px",
+                backgroundColor: theme.palette.primary.main,
+                color: theme.palette.common.white,
+                letterSpacing: "3px",
+                fontSize: userFontSize,
+                fontFamily: userFont,
+              }}
+            >
+              {obj.name}:
+            </Typography>
+            <ul>
+              {obj["$"] && <li>{obj["$"]} $</li>}
+              {obj["€"] && <li>{obj["€"]} €</li>}
+              {obj["PLN"] && <li>{obj["PLN"]} PLN</li>}
+              {obj["¥"] && <li>{obj["¥"]} ¥</li>}
+            </ul>
+          </Box>
+        ))}
+        <Button
+          sx={{
+            fontFamily: userFont,
+            fontSize: userFontSize,
+            marginBottom: 3,
+            marginLeft: 3,
+            marginRight: 3,
+          }}
+          onClick={() => navigate(-1)}
+          variant="outlined"
+        >
+          Back
+        </Button>
+      </>
+    </Box>
   );
 }

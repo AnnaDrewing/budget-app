@@ -3,17 +3,13 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    margin-top: 10px;
+    justify-content: space-between; 
     height: 100%;
 }
 
 .expenseReportTable {
     width: 150px;
-    margin: auto;
     text-align: left;
-}
-
-.category {
-    font-weight: 700;
-    text-decoration: underline;
+    margin: 10px auto;
 }

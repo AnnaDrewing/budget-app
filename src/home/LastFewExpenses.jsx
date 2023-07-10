@@ -9,6 +9,8 @@ import "./LastFewExpenses.css";
 import { styled } from "@mui/material/styles";
 import { v4 as uuid } from "uuid";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
 
 export default function LastFewExpenses({
   expenseList,
@@ -69,13 +71,46 @@ export default function LastFewExpenses({
       border: 0,
     },
   }));
+
+  const theme = useTheme();
+
   return (
     <>
-      {noLoggedExpenses && <p>You have added no expenses so far</p>}
+      {noLoggedExpenses && (
+        <Typography
+          sx={{
+            padding: "3px",
+            margin: "15px",
+            color: theme.palette.text.primary,
+            letterSpacing: "3px",
+            fontSize: userFontSize,
+            fontFamily: userFont,
+          }}
+        >
+          You haven't added any expenses yet. Go spend some money.
+        </Typography>
+      )}
       {!noLoggedExpenses && (
         <Box sx={{ margin: "20px" }}>
-          <TableContainer size="small" component={Paper}>
-            <h3>You recent expenses: </h3>
+          <TableContainer
+            size="small"
+            sx={{
+              boxShadow: `0.1px 0.1px 2px ${theme.palette.primary.main}`,
+            }}
+          >
+            <Typography
+              sx={{
+                padding: "3px",
+                margin: "15px",
+                //backgroundColor: theme.palette.primary.main,
+                //color: theme.palette.common.white,
+                letterSpacing: "3px",
+                fontSize: userFontSize,
+                fontFamily: userFont,
+              }}
+            >
+              Your recent expenses:{" "}
+            </Typography>
             <Table size="small" aria-label="a dense table">
               <TableHead className="tableHeader">
                 <TableRow>

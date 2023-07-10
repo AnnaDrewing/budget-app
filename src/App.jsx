@@ -100,6 +100,7 @@ function App() {
                     expenseList={expenseList}
                     userFont={userFont}
                     userFontSize={userFontSize}
+                    userTheme={userTheme}
                   />
                 }
               />
