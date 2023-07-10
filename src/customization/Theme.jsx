@@ -8,8 +8,6 @@ import { lightTheme, darkTheme } from "../home/Themes";
 
 export default function Theme({ updateTheme, userTheme }) {
   const [theme, setTheme] = useState(userTheme);
-  console.log("Current theme is: " + userTheme);
-  console.log(userTheme);
 
   const handleChange = (evt) => {
     if (evt.target.value === "lightTheme") {

@@ -20,8 +20,8 @@ export default function FontSize({ updateFontSize, userFontSize, userFont }) {
       label: "10",
     },
     {
-      value: 25,
-      label: "25",
+      value: 20,
+      label: "20",
     },
   ];
   return (
@@ -45,7 +45,7 @@ export default function FontSize({ updateFontSize, userFontSize, userFont }) {
         step={1}
         marks={marks}
         min={10}
-        max={25}
+        max={20}
         onChange={handleChange}
       />
     </>
