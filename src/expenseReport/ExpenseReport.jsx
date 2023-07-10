@@ -10,12 +10,7 @@ import "./ExpenseReport.css";
 import { v4 as uuid } from "uuid";
 import { useTheme } from "@mui/material/styles";
 
-export default function ExpenseReport({
-  expenseList,
-  userFont,
-  userFontSize,
-  userTheme,
-}) {
+export default function ExpenseReport({ expenseList, userFont, userFontSize }) {
   const navigate = useNavigate();
 
   //Gather all different categories
@@ -31,6 +26,7 @@ export default function ExpenseReport({
   let expenseReportArray = [];
   categories.forEach((category) => {
     let object = {};
+    // Create an object for each expense category
     expenseList.forEach((expense) => {
       let currency = expense.currency;
       if (expense.category == category) {
@@ -53,6 +49,14 @@ export default function ExpenseReport({
     });
     expenseReportArray.push(object);
   });
+
+  const allExpenses = {};
+  expenseReportArray.forEach((obj) => {
+    // TODO - create an object with sum of expenses regardless of category, grouped by currency
+  });
+  // TODO: the establish main currency - that has to change dynamically!
+  // calculate one value summing up all the expenses in the main currency
+  // display this value in the beginning of the table
 
   // sorting categories by names, alphabetically
   expenseReportArray.sort((a, b) => {
