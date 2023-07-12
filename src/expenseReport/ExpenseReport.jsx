@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import "./ExpenseReport.css";
 import { v4 as uuid } from "uuid";
 import { useTheme } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { AiOutlineInfoCircle } from "react-icons/ai";
+import "./ExpenseReport.css";
 
 export default function ExpenseReport({
   expenseList,
