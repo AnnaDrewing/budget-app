@@ -89,7 +89,10 @@ export default function LastFewExpenses({
           >
             You haven't added any expenses yet. Go spend some money.
           </Typography>
-          <img src="./budget-app/32.png" width="90%" />
+          <img
+            src="https://github.com/AnnaDrewing/budget-app/blob/main/public/32.png"
+            width="90%"
+          />
         </>
       )}
       {!noLoggedExpenses && (
