@@ -166,7 +166,7 @@ export default function ExpenseReport({
           >
             I kindly report that you have added no expenses so far.
           </Typography>
-          <img src="../../public/5.png" width="90%" />
+          <img src="public/5.png" width="90%" />
         </Box>
       )}
       <>

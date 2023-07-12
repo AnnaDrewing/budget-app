@@ -89,7 +89,7 @@ export default function LastFewExpenses({
           >
             You haven't added any expenses yet. Go spend some money.
           </Typography>
-          <img src="../../public/32.png" width="90%" />
+          <img src="public/32.png" width="90%" />
         </>
       )}
       {!noLoggedExpenses && (
