@@ -67,7 +67,7 @@ function App() {
             updateTheme={updateTheme}
             userTheme={userTheme}
           />
-          <BrowserRouter basename={import.meta.env.DEV ? "/" : "/budget-app/"}>
+          <BrowserRouter basename={"/budget-app/"}>
             <Routes>
               <Route
                 exact
