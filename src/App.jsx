@@ -101,6 +101,7 @@ function App() {
                     userFont={userFont}
                     userFontSize={userFontSize}
                     userTheme={userTheme}
+                    userCurrency={userCurrency}
                   />
                 }
               />

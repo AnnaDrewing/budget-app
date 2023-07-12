@@ -39,7 +39,7 @@ export default function LastFewExpenses({
     const year = element.date["$y"];
     const fullDate = day + " " + monthName + " " + year;
     const category = element.category;
-    const price = element.price + element.currency;
+    const price = element.price + " " + element.currency;
     rows.push(createData(price, category, fullDate));
   });
 
