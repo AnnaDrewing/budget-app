@@ -9,7 +9,6 @@ import { useTheme } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import { HiInformationCircle } from "react-icons/hi";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
 export default function ExpenseReport({
