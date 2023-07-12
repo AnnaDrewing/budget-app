@@ -27,7 +27,7 @@ export default function AddExpense({
   const [category, setCategory] = useState("Other");
   const [price, setPrice] = useState("0.00");
   const [priceIsValid, setPriceIsValid] = useState(false);
-  const [date, setDate] = useState(dayjs("2023-01-01"));
+  const [date, setDate] = useState(dayjs("2023-08-07"));
   const [operationSuccessful, setOperationSuccessful] = useState(false);
 
   const updateCategory = (evt) => {
@@ -63,7 +63,6 @@ export default function AddExpense({
   };
 
   const updateDate = (newDate) => {
-    console.log(newDate.$d);
     setDate(newDate);
   };
 

@@ -20,7 +20,7 @@ export default function ExpenseReport({
 }) {
   const navigate = useNavigate();
 
-  //Gather all different categories
+  //Gathering all different categories
   let categories = [];
   expenseList.forEach((element) => {
     let currentCategory = element.category;
@@ -29,27 +29,21 @@ export default function ExpenseReport({
     }
   });
 
-  //Add prices within the same category
   let expenseReportArray = [];
   categories.forEach((category) => {
     let object = {};
-    // Create an object for each expense category
+    // Creating an object for each expense category
     expenseList.forEach((expense) => {
       let currency = expense.currency;
       if (expense.category == category) {
-        // Check if object with this category/currency already exists
         if (!object.name) {
-          // create a new object with this category/currency and value 0
           object.name = category;
           object[currency] = 0.0;
         }
-        // object of this category exists, but not with the current currency
         if (!object[currency]) {
           object[currency] = 0.0;
         }
-        // now the object with this category and currency definitely exsits
         let newValue = object[currency] + parseFloat(expense.price);
-        // add the new value
         object[currency] = Math.round(newValue * 100) / 100;
         object.id = uuid();
       }
@@ -57,7 +51,7 @@ export default function ExpenseReport({
     expenseReportArray.push(object);
   });
 
-  // TODO - create an object with sum of expenses regardless of category, grouped by currency
+  // Creating an object with sum of expenses regardless of category, grouped by currency
   const allExpensesObject = {
     "€": 0.0,
     $: 0.0,
@@ -86,13 +80,10 @@ export default function ExpenseReport({
     let allYenSpent = allExpensesObject["¥"] + obj["¥"];
     allExpensesObject["¥"] = Math.round(allYenSpent * 100) / 100;
   });
-  console.log(allExpensesObject);
-  // TODO: the establish main currency - that has to change dynamically!
-  // calculate one value summing up all the expenses in the main currency
-  // display this value in the beginning of the table
+
+  // Calculating the total in different currencies
   let total = 0.0;
   if (userCurrency == "€") {
-    console.log("User currency is Euro now!");
     let dollarToEuro = 0.91;
     let zlotyToEuro = 0.22;
     let yenToEuro = 0.0064;
@@ -104,7 +95,6 @@ export default function ExpenseReport({
     total = Math.round(total * 100) / 100;
   }
   if (userCurrency == "$") {
-    console.log("User currency is Dollar now!");
     let euroToDollar = 1.1;
     let zlotyToDollar = 0.25;
     let yenToDollar = 0.0071;
@@ -116,7 +106,6 @@ export default function ExpenseReport({
     total = Math.round(total * 100) / 100;
   }
   if (userCurrency == "PLN") {
-    console.log("User currency is Zloty now!");
     let euroToZloty = 4.44;
     let dollarToZloty = 4.04;
     let yenToZloty = 0.03;
@@ -128,7 +117,6 @@ export default function ExpenseReport({
     total = Math.round(total * 100) / 100;
   }
   if (userCurrency == "¥") {
-    console.log("User currency is Yen now!");
     let euroToYen = 154.47;
     let dollarToYen = 140.54;
     let zlotyToYen = 34.76;
@@ -151,7 +139,6 @@ export default function ExpenseReport({
       return 1;
     }
 
-    // names must be equal
     return 0;
   });
 
