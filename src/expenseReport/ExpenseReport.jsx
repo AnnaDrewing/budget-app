@@ -9,7 +9,7 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { AiOutlineInfoCircle } from "react-icons/ai";
-import "./ExpenseReport.css";
+//import "./ExpenseReport.css";
 
 export default function ExpenseReport({
   expenseList,
