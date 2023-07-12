@@ -166,8 +166,9 @@ export default function ExpenseReport({
           >
             I kindly report that you have added no expenses so far.
           </Typography>
+          {/* Changing the Img Src Again */}
           <img
-            src="https://github.com/AnnaDrewing/budget-app/blob/main/public/5.png?raw=true"
+            src="https://raw.githubusercontent.com/AnnaDrewing/budget-app/main/public/5.png"
             width="90%"
           />
         </Box>
