@@ -5,7 +5,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import "./LastFewExpenses.css";
 import { styled } from "@mui/material/styles";
 import { v4 as uuid } from "uuid";
 import Box from "@mui/material/Box";
@@ -77,18 +76,21 @@ export default function LastFewExpenses({
   return (
     <>
       {noLoggedExpenses && (
-        <Typography
-          sx={{
-            padding: "3px",
-            margin: "15px",
-            color: theme.palette.text.primary,
-            letterSpacing: "3px",
-            fontSize: userFontSize,
-            fontFamily: userFont,
-          }}
-        >
-          You haven't added any expenses yet. Go spend some money.
-        </Typography>
+        <>
+          <Typography
+            sx={{
+              padding: "3px",
+              margin: "15px",
+              color: theme.palette.text.primary,
+              letterSpacing: "3px",
+              fontSize: userFontSize,
+              fontFamily: userFont,
+            }}
+          >
+            You haven't added any expenses yet. Go spend some money.
+          </Typography>
+          <img src="../../public/32.png" width="90%" />
+        </>
       )}
       {!noLoggedExpenses && (
         <Box sx={{ margin: "20px" }}>
@@ -109,7 +111,7 @@ export default function LastFewExpenses({
                 fontFamily: userFont,
               }}
             >
-              Your recent expenses:{" "}
+              Your most recent expenses:
             </Typography>
             <Table size="small" aria-label="a dense table">
               <TableHead className="tableHeader">
