@@ -30,7 +30,9 @@ export default function ExpenseReport({
 
   let expenseReportArray = [];
   categories.forEach((category) => {
-    let object = {};
+    let object = {
+      id: uuid(),
+    };
     // Creating an object for each expense category
     expenseList.forEach((expense) => {
       let currency = expense.currency;
@@ -51,6 +53,7 @@ export default function ExpenseReport({
   });
 
   // Creating an object with sum of expenses regardless of category, grouped by currency
+  let allExpensesObjectUuid = uuid();
   const allExpensesObject = {
     "€": 0.0,
     $: 0.0,
@@ -166,7 +169,6 @@ export default function ExpenseReport({
           >
             I kindly report that you have added no expenses so far.
           </Typography>
-          {/* Changing the Img Src Again */}
           <img
             src="https://raw.githubusercontent.com/AnnaDrewing/budget-app/main/public/5.png"
             width="90%"
@@ -191,16 +193,24 @@ export default function ExpenseReport({
             </Typography>
             <ul className="expenseReportTable">
               {allExpensesObject["$"] != 0.0 && (
-                <li>{allExpensesObject["$"]} $</li>
+                <li key={allExpensesObjectUuid + "$"}>
+                  {allExpensesObject["$"]} $
+                </li>
               )}
               {allExpensesObject["€"] != 0.0 && (
-                <li>{allExpensesObject["€"]} €</li>
+                <li key={allExpensesObjectUuid + "€"}>
+                  {allExpensesObject["€"]} €
+                </li>
               )}
               {allExpensesObject["PLN"] != 0.0 && (
-                <li>{allExpensesObject["PLN"]} PLN</li>
+                <li key={allExpensesObjectUuid + "PLN"}>
+                  {allExpensesObject["PLN"]} PLN
+                </li>
               )}
               {allExpensesObject["¥"] != 0.0 && (
-                <li>{allExpensesObject["¥"]} ¥</li>
+                <li key={allExpensesObjectUuid + "¥"}>
+                  {allExpensesObject["¥"]} ¥
+                </li>
               )}
             </ul>
             <Divider
@@ -240,10 +250,12 @@ export default function ExpenseReport({
               {obj.name}:
             </Typography>
             <ul>
-              {obj["$"] != 0.0 && <li>{obj["$"]} $</li>}
-              {obj["€"] != 0.0 && <li>{obj["€"]} €</li>}
-              {obj["PLN"] != 0.0 && <li>{obj["PLN"]} PLN</li>}
-              {obj["¥"] != 0.0 && <li>{obj["¥"]} ¥</li>}
+              {obj["$"] != 0.0 && <li key={obj.id + "$"}>{obj["$"]} $</li>}
+              {obj["€"] != 0.0 && <li key={obj.id + "€"}>{obj["€"]} €</li>}
+              {obj["PLN"] != 0.0 && (
+                <li key={obj.id + "PLN"}>{obj["PLN"]} PLN</li>
+              )}
+              {obj["¥"] != 0.0 && <li key={obj.id + "¥"}>{obj["¥"]} ¥</li>}
             </ul>
           </Box>
         ))}

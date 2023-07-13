@@ -42,6 +42,7 @@ export default function AddExpense({
 
   const setDefaultPrice = () => {
     setPrice("0.00");
+    setPriceIsValid(false);
   };
 
   const clearThePriceField = () => {
@@ -70,7 +71,6 @@ export default function AddExpense({
     addExpense(date, category, price, userCurrency);
     setDefaultPrice();
     setDefaultCategory();
-    setPriceIsValid(true);
     setOperationSuccessful(true);
   };
 
