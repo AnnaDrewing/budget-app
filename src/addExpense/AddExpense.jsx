@@ -29,6 +29,7 @@ export default function AddExpense({
   const [priceIsValid, setPriceIsValid] = useState(false);
   const [date, setDate] = useState(dayjs("2023-08-07"));
   const [operationSuccessful, setOperationSuccessful] = useState(false);
+  const [activeButton, setActiveButton] = useState(false);
 
   const updateCategory = (evt) => {
     setCategory(evt.target.value);
@@ -42,7 +43,7 @@ export default function AddExpense({
 
   const setDefaultPrice = () => {
     setPrice("0.00");
-    setPriceIsValid(false);
+    setActiveButton(false);
   };
 
   const clearThePriceField = () => {
@@ -58,8 +59,10 @@ export default function AddExpense({
     const regex = new RegExp("^\\d+(\\.\\d{1,2})$", "g");
     if (regex.test(price)) {
       setPriceIsValid(true);
+      setActiveButton(true);
     } else {
       setPriceIsValid(false);
+      setActiveButton(false);
     }
   };
 
@@ -138,7 +141,7 @@ export default function AddExpense({
       )}
       <Box sx={{ marginBottom: 3 }}>
         <Button
-          disabled={!priceIsValid}
+          disabled={!activeButton}
           onClick={newExpense}
           variant="contained"
           sx={{ fontFamily: userFont, fontSize: userFontSize }}

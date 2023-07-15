@@ -28,28 +28,121 @@ export default function ExpenseReport({
     }
   });
 
+  // Calculating the total in different currencies
+  const sumToEuro = (euro, dollar, zloty, yen) => {
+    let dollarToEuro = 0.91;
+    let zlotyToEuro = 0.22;
+    let yenToEuro = 0.0064;
+    return (
+      Math.round(
+        (euro + dollar * dollarToEuro + zloty * zlotyToEuro + yen * yenToEuro) *
+          100
+      ) / 100
+    );
+  };
+
+  const sumToDollar = (euro, dollar, zloty, yen) => {
+    let euroToDollar = 1.1;
+    let zlotyToDollar = 0.25;
+    let yenToDollar = 0.0071;
+    return (
+      Math.round(
+        (dollar +
+          euro * euroToDollar +
+          zloty * zlotyToDollar +
+          yen * yenToDollar) *
+          100
+      ) / 100
+    );
+  };
+
+  const sumToZloty = (euro, dollar, zloty, yen) => {
+    let euroToZloty = 4.44;
+    let dollarToZloty = 4.04;
+    let yenToZloty = 0.03;
+    return (
+      Math.round(
+        (zloty +
+          euro * euroToZloty +
+          dollar * dollarToZloty +
+          yen * yenToZloty) *
+          100
+      ) / 100
+    );
+  };
+
+  const sumToYen = (euro, dollar, zloty, yen) => {
+    let euroToYen = 154.47;
+    let dollarToYen = 140.54;
+    let zlotyToYen = 34.76;
+    return (
+      Math.round(
+        (yen + euro * euroToYen + dollar * dollarToYen + zloty * zlotyToYen) *
+          100
+      ) / 100
+    );
+  };
+
   let expenseReportArray = [];
   categories.forEach((category) => {
-    let object = {
+    let categoryObj = {
       id: uuid(),
+      total: 0.0,
+      "€": 0.0,
+      $: 0.0,
+      PLN: 0.0,
+      "¥": 0.0,
     };
     // Creating an object for each expense category
     expenseList.forEach((expense) => {
       let currency = expense.currency;
       if (expense.category == category) {
-        if (!object.name) {
-          object.name = category;
-          object[currency] = 0.0;
+        if (!categoryObj.name) {
+          categoryObj.name = category;
+          // categoryObj[currency] = 0.0;
         }
-        if (!object[currency]) {
-          object[currency] = 0.0;
+        if (!categoryObj[currency]) {
+          // categoryObj[currency] = 0.0;
         }
-        let newValue = object[currency] + parseFloat(expense.price);
-        object[currency] = Math.round(newValue * 100) / 100;
-        object.id = uuid();
+        let newValue = categoryObj[currency] + parseFloat(expense.price);
+        categoryObj[currency] = Math.round(newValue * 100) / 100;
+        categoryObj.id = uuid();
       }
     });
-    expenseReportArray.push(object);
+    // calculate the total for each category
+    if (userCurrency == "€") {
+      categoryObj.total = sumToEuro(
+        categoryObj["€"],
+        categoryObj["$"],
+        categoryObj["PLN"],
+        categoryObj["¥"]
+      ).toFixed(2);
+    }
+    if (userCurrency == "$") {
+      categoryObj.total = sumToDollar(
+        categoryObj["€"],
+        categoryObj["$"],
+        categoryObj["PLN"],
+        categoryObj["¥"]
+      ).toFixed(2);
+    }
+    if (userCurrency == "PLN") {
+      categoryObj.total = sumToZloty(
+        categoryObj["€"],
+        categoryObj["$"],
+        categoryObj["PLN"],
+        categoryObj["¥"]
+      ).toFixed(2);
+    }
+    if (userCurrency == "¥") {
+      categoryObj.total = sumToYen(
+        categoryObj["€"],
+        categoryObj["$"],
+        categoryObj["PLN"],
+        categoryObj["¥"]
+      ).toFixed(2);
+    }
+    expenseReportArray.push(categoryObj);
   });
 
   // Creating an object with sum of expenses regardless of category, grouped by currency
@@ -83,51 +176,38 @@ export default function ExpenseReport({
     allExpensesObject["¥"] = Math.round(allYenSpent * 100) / 100;
   });
 
-  // Calculating the total in different currencies
   let total = 0.0;
   if (userCurrency == "€") {
-    let dollarToEuro = 0.91;
-    let zlotyToEuro = 0.22;
-    let yenToEuro = 0.0064;
-    total =
-      allExpensesObject["€"] +
-      allExpensesObject["$"] * dollarToEuro +
-      allExpensesObject["PLN"] * zlotyToEuro +
-      allExpensesObject["¥"] * yenToEuro;
-    total = Math.round(total * 100) / 100;
+    total = sumToEuro(
+      allExpensesObject["€"],
+      allExpensesObject["$"],
+      allExpensesObject["PLN"],
+      allExpensesObject["¥"]
+    ).toFixed(2);
   }
   if (userCurrency == "$") {
-    let euroToDollar = 1.1;
-    let zlotyToDollar = 0.25;
-    let yenToDollar = 0.0071;
-    total =
-      allExpensesObject["$"] +
-      allExpensesObject["€"] * euroToDollar +
-      allExpensesObject["PLN"] * zlotyToDollar +
-      allExpensesObject["¥"] * yenToDollar;
-    total = Math.round(total * 100) / 100;
+    total = sumToDollar(
+      allExpensesObject["€"],
+      allExpensesObject["$"],
+      allExpensesObject["PLN"],
+      allExpensesObject["¥"]
+    ).toFixed(2);
   }
   if (userCurrency == "PLN") {
-    let euroToZloty = 4.44;
-    let dollarToZloty = 4.04;
-    let yenToZloty = 0.03;
-    total =
-      allExpensesObject["PLN"] +
-      allExpensesObject["€"] * euroToZloty +
-      allExpensesObject["$"] * dollarToZloty +
-      allExpensesObject["¥"] * yenToZloty;
-    total = Math.round(total * 100) / 100;
+    total = sumToZloty(
+      allExpensesObject["€"],
+      allExpensesObject["$"],
+      allExpensesObject["PLN"],
+      allExpensesObject["¥"]
+    ).toFixed(2);
   }
   if (userCurrency == "¥") {
-    let euroToYen = 154.47;
-    let dollarToYen = 140.54;
-    let zlotyToYen = 34.76;
-    total =
-      allExpensesObject["¥"] +
-      allExpensesObject["€"] * euroToYen +
-      allExpensesObject["PLN"] * zlotyToYen +
-      allExpensesObject["$"] * dollarToYen;
-    total = Math.round(total * 100) / 100;
+    total = sumToYen(
+      allExpensesObject["€"],
+      allExpensesObject["$"],
+      allExpensesObject["PLN"],
+      allExpensesObject["¥"]
+    ).toFixed(2);
   }
 
   // sorting categories by names, alphabetically
@@ -170,7 +250,7 @@ export default function ExpenseReport({
             I kindly report that you have added no expenses so far.
           </Typography>
           <img
-            src="https://raw.githubusercontent.com/AnnaDrewing/budget-app/main/public/5.png"
+            src="https://raw.githubusercontent.com/AnnaDrewing/budget-app/main/public/32.png"
             width="90%"
           />
         </Box>
@@ -247,7 +327,10 @@ export default function ExpenseReport({
                 fontFamily: userFont,
               }}
             >
-              {obj.name}:
+              {obj.name}: <br />
+              <p style={{ textAlign: "right", padding: 0, margin: 0 }}>
+                {obj.total} {userCurrency}
+              </p>
             </Typography>
             <ul>
               {obj["$"] != 0.0 && <li key={obj.id + "$"}>{obj["$"]} $</li>}
