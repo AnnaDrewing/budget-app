@@ -39,7 +39,12 @@ export default function LastFewExpenses({
     const fullDate = day + " " + monthName + " " + year;
     const category = element.category;
     const price = element.price + " " + element.currency;
-    rows.push(createData(price, category, fullDate));
+    const label = element.label;
+    if (label == "") {
+      rows.push(createData(price, category, fullDate));
+    } else {
+      rows.push(createData(price, label, fullDate));
+    }
   });
 
   let lastThreeExpenses = rows.slice(-3);
@@ -53,7 +58,8 @@ export default function LastFewExpenses({
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.primary.main,
-      color: theme.palette.common.white,
+      color: theme.palette.primary.contrastText,
+      letterSpacing: "1px",
     },
     [`&.${tableCellClasses.body}`]: {
       fontSize: userFontSize,
@@ -100,15 +106,13 @@ export default function LastFewExpenses({
           <TableContainer
             size="small"
             sx={{
-              boxShadow: `0.1px 0.1px 2px ${theme.palette.primary.main}`,
+              border: `0.5px solid ${theme.palette.primary.main}`,
             }}
           >
             <Typography
               sx={{
                 padding: "3px",
                 margin: "15px",
-                //backgroundColor: theme.palette.primary.main,
-                //color: theme.palette.common.white,
                 letterSpacing: "3px",
                 fontSize: userFontSize,
                 fontFamily: userFont,
@@ -120,7 +124,11 @@ export default function LastFewExpenses({
               <TableHead className="tableHeader">
                 <TableRow>
                   <StyledTableCell
-                    sx={{ fontFamily: userFont, fontSize: userFontSize }}
+                    sx={{
+                      fontFamily: userFont,
+                      fontSize: userFontSize,
+                      // color: theme.palette.primary.contrastText,
+                    }}
                   >
                     Price
                   </StyledTableCell>
@@ -128,7 +136,7 @@ export default function LastFewExpenses({
                     sx={{ fontFamily: userFont, fontSize: userFontSize }}
                     align="right"
                   >
-                    Category
+                    Category/Label
                   </StyledTableCell>
                   <StyledTableCell
                     sx={{ fontFamily: userFont, fontSize: userFontSize }}

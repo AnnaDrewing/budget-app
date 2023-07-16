@@ -20,7 +20,7 @@ function App() {
   const [userCurrency, setUserCurency] = useState("€");
   const [userTheme, setUserTheme] = useState(lightTheme);
 
-  const addExpense = (date, category, price, currency) => {
+  const addExpense = (date, category, price, currency, label) => {
     setExpenseList((oldExpenseList) => [
       ...oldExpenseList,
       {
@@ -29,6 +29,7 @@ function App() {
         category: category,
         price: price,
         currency: currency,
+        label: label,
       },
     ]);
   };

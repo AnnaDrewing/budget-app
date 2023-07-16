@@ -15,6 +15,7 @@ import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import "./AddExpense.css";
+import { useTheme } from "@mui/material/styles";
 
 export default function AddExpense({
   addExpense,
@@ -30,6 +31,7 @@ export default function AddExpense({
   const [date, setDate] = useState(dayjs("2023-08-07"));
   const [operationSuccessful, setOperationSuccessful] = useState(false);
   const [activeButton, setActiveButton] = useState(false);
+  const [label, setLabel] = useState("");
 
   const updateCategory = (evt) => {
     setCategory(evt.target.value);
@@ -39,6 +41,10 @@ export default function AddExpense({
     const newPrice = evt.target.value;
     setPrice(newPrice);
     validatePrice(newPrice);
+  };
+
+  const updateLabel = (evt) => {
+    setLabel(evt.target.value);
   };
 
   const setDefaultPrice = () => {
@@ -53,6 +59,10 @@ export default function AddExpense({
 
   const setDefaultCategory = () => {
     setCategory("Other");
+  };
+
+  const setDefaultLabel = () => {
+    setLabel("");
   };
 
   const validatePrice = (price) => {
@@ -71,15 +81,18 @@ export default function AddExpense({
   };
 
   const newExpense = () => {
-    addExpense(date, category, price, userCurrency);
+    addExpense(date, category, price, userCurrency, label);
     setDefaultPrice();
     setDefaultCategory();
+    setDefaultLabel();
     setOperationSuccessful(true);
   };
 
   const clearTheFeedback = () => {
     setOperationSuccessful(false);
   };
+
+  const theme = useTheme();
 
   return (
     <Box className="AddExpense">
@@ -88,7 +101,11 @@ export default function AddExpense({
         onChange={updateDate}
         onClick={clearTheFeedback}
         value={date}
-        sx={{ margin: 3 }}
+        sx={{
+          margin: 3,
+          color: theme.palette.text.secondary,
+          borderColor: theme.palette.text.secondary,
+        }}
       />
       <TextField
         label="Price"
@@ -115,17 +132,48 @@ export default function AddExpense({
           onChange={updateCategory}
           onClick={clearTheFeedback}
         >
-          <MenuItem value="Other">
+          <MenuItem
+            value="Other"
+            sx={{ color: theme.palette.text.selectTextColor }}
+          >
             <em>Other</em>
           </MenuItem>
-          <MenuItem value={"Rent"}>Rent</MenuItem>
-          <MenuItem value={"Entertainment"}>Entertainment</MenuItem>
-          <MenuItem value={"Food"}>Food</MenuItem>
+          <MenuItem
+            value={"Rent"}
+            sx={{ color: theme.palette.text.selectTextColor }}
+          >
+            Rent
+          </MenuItem>
+          <MenuItem
+            value={"Entertainment"}
+            sx={{ color: theme.palette.text.selectTextColor }}
+          >
+            Entertainment
+          </MenuItem>
+          <MenuItem
+            value={"Food"}
+            sx={{ color: theme.palette.text.selectTextColor }}
+          >
+            Food
+          </MenuItem>
         </Select>
       </FormControl>
+      <TextField
+        id="label"
+        label="Label"
+        helperText="This field is optional"
+        value={label}
+        onChange={updateLabel}
+        sx={{ margin: 3, marginTop: 0 }}
+      />
       {!priceIsValid && (
         <Alert
-          sx={{ fontFamily: userFont, fontSize: userFontSize }}
+          sx={{
+            fontFamily: userFont,
+            fontSize: userFontSize,
+            backgroundColor: theme.palette.info.background,
+            color: theme.palette.info.text,
+          }}
           severity="info"
         >
           Please make sure you use the valid price format, e.g. 9.99
@@ -133,13 +181,18 @@ export default function AddExpense({
       )}
       {operationSuccessful && (
         <Alert
-          sx={{ fontFamily: userFont, fontSize: userFontSize }}
+          sx={{
+            fontFamily: userFont,
+            fontSize: userFontSize,
+            backgroundColor: theme.palette.success.background,
+            color: theme.palette.success.text,
+          }}
           severity="success"
         >
           Your expense has been added
         </Alert>
       )}
-      <Box sx={{ marginBottom: 3 }}>
+      <Box sx={{ marginBottom: 3, marginTop: 2 }}>
         <Button
           disabled={!activeButton}
           onClick={newExpense}

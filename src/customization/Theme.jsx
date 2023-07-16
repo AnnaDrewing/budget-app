@@ -31,8 +31,18 @@ export default function Theme({ updateTheme, userTheme }) {
           label="Theme"
           onChange={handleChange}
         >
-          <MenuItem value="lightTheme">Light</MenuItem>
-          <MenuItem value="darkTheme">Dark</MenuItem>
+          <MenuItem
+            value="lightTheme"
+            sx={{ color: theme.palette.text.selectTextColor }}
+          >
+            Light
+          </MenuItem>
+          <MenuItem
+            value="darkTheme"
+            sx={{ color: theme.palette.text.selectTextColor }}
+          >
+            Dark
+          </MenuItem>
         </Select>
       </FormControl>
     </>

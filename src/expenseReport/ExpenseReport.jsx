@@ -258,12 +258,12 @@ export default function ExpenseReport({
       <>
         {/* Sum of the expenses */}
         {expenseReportArray.length > 0 && (
-          <>
+          <Box sx={{ width: "300px", margin: "20px auto" }}>
             <Typography
               sx={{
                 padding: "3px",
                 backgroundColor: theme.palette.primary.main,
-                color: theme.palette.common.white,
+                color: theme.palette.primary.contrastText,
                 letterSpacing: "3px",
                 fontSize: userFontSize,
                 fontFamily: userFont,
@@ -295,7 +295,17 @@ export default function ExpenseReport({
             </ul>
             <Divider
               variant="middle"
-              sx={{ color: theme.palette.primary.main }}
+              sx={{
+                "&.MuiDivider-root": {
+                  "&::before": {
+                    borderTop: `thin solid ${theme.palette.primary.main}`,
+                  },
+                  "&::after": {
+                    borderTop: `thin solid ${theme.palette.primary.main}`,
+                  },
+                },
+                fontWeight: "700",
+              }}
             >
               Total in {userCurrency}: {total}
               <Tooltip title="You can change the currency displayed here by changing the settings in the main menu">
@@ -306,32 +316,44 @@ export default function ExpenseReport({
                 </IconButton>
               </Tooltip>
             </Divider>
-          </>
+          </Box>
         )}
         {/* Expenses by category */}
         {expenseReportArray.map((obj) => (
           <Box
             className="expenseReportTable"
             sx={{
-              boxShadow: `0.1px 0.1px 2px ${theme.palette.primary.main}`,
-              backgroundColor: theme.palette.background.paper,
+              border: `0.5px solid ${theme.palette.primary.main}`,
             }}
           >
-            <Typography
+            <Box
               sx={{
                 padding: "3px",
                 backgroundColor: theme.palette.primary.main,
-                color: theme.palette.common.white,
-                letterSpacing: "3px",
-                fontSize: userFontSize,
-                fontFamily: userFont,
+                color: theme.palette.primary.contrastText,
               }}
             >
-              {obj.name}: <br />
-              <p style={{ textAlign: "right", padding: 0, margin: 0 }}>
+              <Typography
+                sx={{
+                  letterSpacing: "2px",
+                  fontSize: userFontSize,
+                  fontFamily: userFont,
+                }}
+              >
+                {obj.name}:
+              </Typography>
+              <Typography
+                style={{
+                  textAlign: "right",
+                  margin: 0,
+                  letterSpacing: "2px",
+                  fontSize: userFontSize,
+                  fontFamily: userFont,
+                }}
+              >
                 {obj.total} {userCurrency}
-              </p>
-            </Typography>
+              </Typography>
+            </Box>
             <ul>
               {obj["$"] != 0.0 && <li key={obj.id + "$"}>{obj["$"]} $</li>}
               {obj["€"] != 0.0 && <li key={obj.id + "€"}>{obj["€"]} €</li>}
@@ -346,6 +368,7 @@ export default function ExpenseReport({
           sx={{
             fontFamily: userFont,
             fontSize: userFontSize,
+            marginTop: 3,
             marginBottom: 3,
             marginLeft: 3,
             marginRight: 3,
