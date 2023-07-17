@@ -66,28 +66,40 @@ export default function CustomizationBar({
       <div className="CustomizationNav">
         <div
           className="navIcon"
-          style={{ backgroundColor: userTheme.palette.tab1 }}
+          style={{
+            backgroundColor: userTheme.palette.tab1,
+            color: userTheme.palette.primary.contrastText,
+          }}
           onClick={toggleCurrencySetting}
         >
           <BsCurrencyExchange />
         </div>
         <div
           className="navIcon"
-          style={{ backgroundColor: userTheme.palette.tab2 }}
+          style={{
+            backgroundColor: userTheme.palette.tab2,
+            color: userTheme.palette.primary.contrastText,
+          }}
           onClick={toggleFontFamilySetting}
         >
           <RxFontFamily />
         </div>
         <div
           className="navIcon"
-          style={{ backgroundColor: userTheme.palette.tab3 }}
+          style={{
+            backgroundColor: userTheme.palette.tab3,
+            color: userTheme.palette.primary.contrastText,
+          }}
           onClick={toggleFontSizeSetting}
         >
           <RxFontSize />
         </div>
         <div
           className="navIcon"
-          style={{ backgroundColor: userTheme.palette.tab4 }}
+          style={{
+            backgroundColor: userTheme.palette.tab4,
+            color: userTheme.palette.primary.contrastText,
+          }}
           onClick={toggleThemeSetting}
         >
           <CgDarkMode />

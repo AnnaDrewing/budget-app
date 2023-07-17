@@ -26,31 +26,12 @@ export default function Currency({ updateCurrency, userCurrency }) {
           name="currency"
           label="Currency"
           onChange={handleChange}
+          sx={{ color: "white" }}
         >
-          <MenuItem
-            value="€"
-            sx={{ color: theme.palette.primary.contrastText }}
-          >
-            Euro
-          </MenuItem>
-          <MenuItem
-            value="$"
-            sx={{ color: theme.palette.primary.contrastText }}
-          >
-            US Dollar
-          </MenuItem>
-          <MenuItem
-            value="PLN"
-            sx={{ color: theme.palette.primary.contrastText }}
-          >
-            Polish Złoty
-          </MenuItem>
-          <MenuItem
-            value="¥"
-            sx={{ color: theme.palette.primary.contrastText }}
-          >
-            Yen
-          </MenuItem>
+          <MenuItem value="€">Euro</MenuItem>
+          <MenuItem value="$">US Dollar</MenuItem>
+          <MenuItem value="PLN">Polish Złoty</MenuItem>
+          <MenuItem value="¥">Yen</MenuItem>
         </Select>
       </FormControl>
     </>

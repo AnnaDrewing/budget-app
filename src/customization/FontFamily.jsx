@@ -17,39 +17,17 @@ export default function FontFamily({ updateFont, userFont }) {
   const theme = useTheme();
   return (
     <FormControl size="small" style={{ width: "200px" }}>
-      <InputLabel id="font-label">Font</InputLabel>
       <Select
-        labelId="font-label"
         id="font"
         value={fontFamily}
         name="font"
-        label="Font"
         onChange={handleChange}
+        sx={{ backgroundColor: theme.palette.background.default }}
       >
-        <MenuItem
-          value="Arial"
-          sx={{ color: theme.palette.primary.contrastText }}
-        >
-          Arial
-        </MenuItem>
-        <MenuItem
-          value="Verdana"
-          sx={{ color: theme.palette.primary.contrastText }}
-        >
-          Verdana
-        </MenuItem>
-        <MenuItem
-          value="Times New Roman"
-          sx={{ color: theme.palette.primary.contrastText }}
-        >
-          Times New Roman
-        </MenuItem>
-        <MenuItem
-          value="Georgia"
-          sx={{ color: theme.palette.primary.contrastText }}
-        >
-          Georgia
-        </MenuItem>
+        <MenuItem value="Arial">Arial</MenuItem>
+        <MenuItem value="Verdana">Verdana</MenuItem>
+        <MenuItem value="Times New Roman">Times New Roman</MenuItem>
+        <MenuItem value="Georgia">Georgia</MenuItem>
       </Select>
     </FormControl>
   );

@@ -101,10 +101,9 @@ export default function AddExpense({
         onChange={updateDate}
         onClick={clearTheFeedback}
         value={date}
+        className="datePicker"
         sx={{
           margin: 3,
-          color: theme.palette.text.secondary,
-          borderColor: theme.palette.text.secondary,
         }}
       />
       <TextField

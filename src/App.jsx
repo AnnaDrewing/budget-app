@@ -48,7 +48,7 @@ function App() {
 
   return (
     <ThemeProvider theme={userTheme}>
-      <CssBaseline />
+      <CssBaseline enableColorScheme />
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Box
           className="App"
