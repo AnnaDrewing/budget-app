@@ -96,7 +96,22 @@ export default function AddExpense({
 
   return (
     <Box className="AddExpense">
-      <DatePicker
+      <input
+        style={{
+          color: theme.palette.text.primary,
+          backgroundColor: theme.palette.background.default,
+          border: "1px solid grey",
+          boxSizing: "border-box",
+          margin: "10px 20px",
+          marginTop: "10px",
+          webkitBoxSizing: "border - box " /* Safari/Chrome, other WebKit */,
+          mozBoxSing: "border - box" /* Firefox, other Gecko */,
+          boxSizing: "border - box" /* Opera/IE 8+ */,
+          height: "50px",
+        }}
+        type="date"
+      ></input>
+      {/* <DatePicker
         label="Pick the date"
         onChange={updateDate}
         onClick={clearTheFeedback}
@@ -105,7 +120,7 @@ export default function AddExpense({
         sx={{
           margin: 3,
         }}
-      />
+      /> */}
       <TextField
         label="Price"
         id="price"
