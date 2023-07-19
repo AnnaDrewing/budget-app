@@ -1,8 +1,4 @@
 /* eslint-disable react/prop-types */
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 import { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 
@@ -16,19 +12,45 @@ export default function FontFamily({ updateFont, userFont }) {
 
   const theme = useTheme();
   return (
-    <FormControl size="small" style={{ width: "200px" }}>
-      <Select
+    <>
+      <label
+        htmlFor="font"
+        style={{
+          textAlign: "left",
+          margin: "0 10px",
+          fontSize: "14px",
+          fontFamily: "Helvetica",
+        }}
+      >
+        Font:
+      </label>
+      <select
         id="font"
         value={fontFamily}
         name="font"
         onChange={handleChange}
-        sx={{ backgroundColor: theme.palette.background.default }}
+        style={{
+          width: "200px",
+          color: theme.palette.text.primary,
+          backgroundColor: theme.palette.background.default,
+          fontFamily: "Helvetica",
+          fontSize: "16px",
+          border: "1px solid lightgrey",
+          boxSizing: "border-box",
+          margin: "15px auto",
+          marginTop: "5px",
+          padding: "5px",
+          height: "40px",
+          webkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
+          mozBoxSing: "content - box" /* Firefox, other Gecko */,
+          boxSizing: "content - box" /* Opera/IE 8+ */,
+        }}
       >
-        <MenuItem value="Arial">Arial</MenuItem>
-        <MenuItem value="Verdana">Verdana</MenuItem>
-        <MenuItem value="Times New Roman">Times New Roman</MenuItem>
-        <MenuItem value="Georgia">Georgia</MenuItem>
-      </Select>
-    </FormControl>
+        <option value="Arial">Arial</option>
+        <option value="Verdana">Verdana</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Times New Roman">Times New Roman</option>
+      </select>
+    </>
   );
 }

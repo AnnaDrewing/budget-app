@@ -48,11 +48,11 @@ export const darkTheme = createTheme({
       contrastText: "#ffffff", // text on filled buttons,
     },
     background: {
-      default: "#ffffff",
+      default: "#000000",
       light: "",
     },
     text: {
-      primary: "#000000", // text within the select elements
+      primary: "#ffffff", // text within the form
       secondary: "#8f96a3", // form field labels
       //disabled: "#ff80ab", //pink
       //icon: "#ff9800", //organge

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import Slider from "@mui/material/Slider";
-import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
 
 export default function FontSize({ updateFontSize, userFontSize, userFont }) {
   // changing font size from string to int
@@ -9,7 +8,8 @@ export default function FontSize({ updateFontSize, userFontSize, userFont }) {
   defaultFont = parseInt(userFontSize.substring(0, userFontSize.length - 2));
   // font size as state here must be an integer
   const [fontSize, setFontSize] = useState(defaultFont);
-  const handleChange = (evt, newValue) => {
+  const handleChange = (evt) => {
+    let newValue = evt.target.value;
     setFontSize(newValue);
     // font size as state in the app must be a string with 'px' at the end
     updateFontSize(newValue + "px");
@@ -24,30 +24,40 @@ export default function FontSize({ updateFontSize, userFontSize, userFont }) {
       label: "20",
     },
   ];
+
+  const theme = useTheme();
+
   return (
     <>
-      <Typography
-        style={{ fontSize: "1em" }}
-        id="font-size-slider"
-        gutterBottom
-        sx={{ fontFamily: userFont, fontSize: userFontSize }}
+      <label
+        htmlFor="font-size"
+        style={{
+          textAlign: "left",
+          fontSize: "14px",
+          fontFamily: "Helvetica",
+        }}
       >
-        Font size:
-      </Typography>
-      <Slider
-        sx={{ fontFamily: userFont, fontSize: userFontSize }}
-        style={{ width: "200px" }}
-        size="small"
-        id="font-size-slider"
-        aria-label="Custom marks"
+        Font size: {fontSize} px
+      </label>
+      <input
+        type="range"
+        id="font-size"
+        name="font-size"
+        min="10"
+        max="20"
+        step="1"
         value={fontSize}
-        valueLabelDisplay="auto"
-        step={1}
-        marks={marks}
-        min={10}
-        max={20}
         onChange={handleChange}
-      />
+        style={{
+          webkitAppearance: "none",
+          background: theme.palette.primary.main,
+          margin: "15px auto",
+          height: "10px",
+          border: "1px solid",
+          borderColor: theme.palette.text.primary,
+          borderRadius: "5px",
+        }}
+      ></input>
     </>
   );
 }

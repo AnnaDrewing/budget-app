@@ -96,6 +96,17 @@ export default function AddExpense({
 
   return (
     <Box className="AddExpense">
+      <label
+        htmlFor="price"
+        style={{
+          textAlign: "left",
+          margin: "0 10px",
+          fontSize: "14px",
+          fontFamily: "Helvetica",
+        }}
+      >
+        Date of purchase:
+      </label>
       <input
         style={{
           color: theme.palette.text.primary,
@@ -105,6 +116,8 @@ export default function AddExpense({
           border: "1px solid lightgrey",
           boxSizing: "border-box",
           margin: "15px auto",
+          marginTop: "5px",
+          padding: "5px",
           width: "351.1px",
           height: "56px",
           webkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
@@ -112,76 +125,119 @@ export default function AddExpense({
           boxSizing: "content - box" /* Opera/IE 8+ */,
         }}
         onChange={updateDate}
+        onClick={clearTheFeedback}
         type="date"
         value={date}
       ></input>
-      {/* <DatePicker
-        label="Pick the date"
-        onClick={clearTheFeedback}
-        className="datePicker"
-        sx={{
-          margin: 3,
+      <label
+        htmlFor="price"
+        style={{
+          textAlign: "left",
+          margin: "0 10px",
+          fontSize: "14px",
+          fontFamily: "Helvetica",
         }}
-      /> */}
-      <TextField
-        label="Price"
+      >
+        Price in: {userCurrency}
+      </label>
+      <input
+        type="text"
+        label="price"
         id="price"
-        name="price"
         value={price}
         onChange={updatePrice}
         onClick={clearThePriceField}
-        sx={{ margin: "15px" }}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">{userCurrency}</InputAdornment>
-          ),
+        style={{
+          color: theme.palette.text.primary,
+          backgroundColor: theme.palette.background.default,
+          fontFamily: "Helvetica",
+          fontSize: "16px",
+          border: "1px solid lightgrey",
+          boxSizing: "border-box",
+          margin: "15px auto",
+          marginTop: "5px",
+          padding: "5px",
+          width: "351.1px",
+          height: "56px",
+          webkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
+          mozBoxSing: "content - box" /* Firefox, other Gecko */,
+          boxSizing: "content - box" /* Opera/IE 8+ */,
         }}
-      />
-      <FormControl sx={{ margin: "15px" }}>
-        <InputLabel id="category-label">Category</InputLabel>
-        <Select
-          labelId="category-label"
-          id="category"
-          value={category}
-          name="category"
-          label="Category"
-          onChange={updateCategory}
-          onClick={clearTheFeedback}
-        >
-          <MenuItem
-            value="Other"
-            sx={{ color: theme.palette.text.selectTextColor }}
-          >
-            <em>Other</em>
-          </MenuItem>
-          <MenuItem
-            value={"Rent"}
-            sx={{ color: theme.palette.text.selectTextColor }}
-          >
-            Rent
-          </MenuItem>
-          <MenuItem
-            value={"Entertainment"}
-            sx={{ color: theme.palette.text.selectTextColor }}
-          >
-            Entertainment
-          </MenuItem>
-          <MenuItem
-            value={"Food"}
-            sx={{ color: theme.palette.text.selectTextColor }}
-          >
-            Food
-          </MenuItem>
-        </Select>
-      </FormControl>
-      <TextField
+      ></input>
+      <label
+        htmlFor="category-label"
+        style={{
+          textAlign: "left",
+          margin: "0 10px",
+          fontSize: "14px",
+          fontFamily: "Helvetica",
+        }}
+      >
+        Category:
+      </label>
+      <select
+        id="category"
+        value={category}
+        name="category"
+        onChange={updateCategory}
+        onClick={clearTheFeedback}
+        style={{
+          color: theme.palette.text.primary,
+          backgroundColor: theme.palette.background.default,
+          fontFamily: "Helvetica",
+          fontSize: "16px",
+          border: "1px solid lightgrey",
+          boxSizing: "border-box",
+          margin: "15px auto",
+          marginTop: "5px",
+          padding: "5px",
+          width: "351.1px",
+          height: "56px",
+          webkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
+          mozBoxSing: "content - box" /* Firefox, other Gecko */,
+          boxSizing: "content - box" /* Opera/IE 8+ */,
+        }}
+      >
+        <option value="Other">Other</option>
+        <option value="Food">Food</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Rent">Rent</option>
+      </select>
+      <label
+        htmlFor="label"
+        style={{
+          textAlign: "left",
+          margin: "0 10px",
+          fontSize: "14px",
+          fontFamily: "Helvetica",
+        }}
+      >
+        (Optional) Label:{" "}
+      </label>
+      <input
+        type="text"
         id="label"
-        label="Label"
-        helperText="This field is optional"
         value={label}
         onChange={updateLabel}
-        sx={{ margin: "15px" }}
-      />
+        onClick={clearTheFeedback}
+        style={{
+          color: theme.palette.text.primary,
+          backgroundColor: theme.palette.background.default,
+          fontFamily: "Helvetica",
+          fontSize: "16px",
+          border: "1px solid lightgrey",
+          boxSizing: "border-box",
+          margin: "15px auto",
+          marginTop: "5px",
+          padding: "5px",
+          width: "351.1px",
+          height: "56px",
+          webkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
+          mozBoxSing: "content - box" /* Firefox, other Gecko */,
+          boxSizing: "content - box" /* Opera/IE 8+ */,
+        }}
+      ></input>
+
       {!priceIsValid && (
         <Alert
           sx={{

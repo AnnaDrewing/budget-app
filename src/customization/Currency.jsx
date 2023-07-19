@@ -1,8 +1,4 @@
 /* eslint-disable react/prop-types */
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
 import { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 
@@ -17,23 +13,45 @@ export default function Currency({ updateCurrency, userCurrency }) {
   const theme = useTheme();
   return (
     <>
-      <FormControl size="small" style={{ width: "200px" }}>
-        <InputLabel id="font-label">Currency</InputLabel>
-        <Select
-          labelId="currency-label"
-          id="currency"
-          value={currency}
-          name="currency"
-          label="Currency"
-          onChange={handleChange}
-          sx={{ color: "white" }}
-        >
-          <MenuItem value="€">Euro</MenuItem>
-          <MenuItem value="$">US Dollar</MenuItem>
-          <MenuItem value="PLN">Polish Złoty</MenuItem>
-          <MenuItem value="¥">Yen</MenuItem>
-        </Select>
-      </FormControl>
+      <label
+        htmlFor="currency"
+        style={{
+          textAlign: "left",
+          margin: "0 10px",
+          fontSize: "14px",
+          fontFamily: "Helvetica",
+        }}
+      >
+        Currency:{" "}
+      </label>
+      <select
+        id="currency"
+        value={currency}
+        name="currency"
+        label="Currency"
+        onChange={handleChange}
+        style={{
+          width: "200px",
+          color: theme.palette.text.primary,
+          backgroundColor: theme.palette.background.default,
+          fontFamily: "Helvetica",
+          fontSize: "16px",
+          border: "1px solid lightgrey",
+          boxSizing: "border-box",
+          margin: "15px auto",
+          marginTop: "5px",
+          padding: "5px",
+          height: "40px",
+          webkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
+          mozBoxSing: "content - box" /* Firefox, other Gecko */,
+          boxSizing: "content - box" /* Opera/IE 8+ */,
+        }}
+      >
+        <option value="€">Euro</option>
+        <option value="$">US Dollar</option>
+        <option value="PLN">Polish Złoty</option>
+        <option value="¥">Yen</option>
+      </select>
     </>
   );
 }
