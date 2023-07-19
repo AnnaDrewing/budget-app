@@ -28,7 +28,7 @@ export default function AddExpense({
   const [category, setCategory] = useState("Other");
   const [price, setPrice] = useState("0.00");
   const [priceIsValid, setPriceIsValid] = useState(false);
-  const [date, setDate] = useState(dayjs("2023-08-07"));
+  const [date, setDate] = useState("2023-01-08");
   const [operationSuccessful, setOperationSuccessful] = useState(false);
   const [activeButton, setActiveButton] = useState(false);
   const [label, setLabel] = useState("");
@@ -76,8 +76,8 @@ export default function AddExpense({
     }
   };
 
-  const updateDate = (newDate) => {
-    setDate(newDate);
+  const updateDate = (evt) => {
+    setDate(evt.target.value);
   };
 
   const newExpense = () => {
@@ -100,22 +100,24 @@ export default function AddExpense({
         style={{
           color: theme.palette.text.primary,
           backgroundColor: theme.palette.background.default,
-          border: "1px solid grey",
+          fontFamily: "Helvetica",
+          fontSize: "16px",
+          border: "1px solid lightgrey",
           boxSizing: "border-box",
-          margin: "10px 20px",
-          marginTop: "10px",
-          webkitBoxSizing: "border - box " /* Safari/Chrome, other WebKit */,
-          mozBoxSing: "border - box" /* Firefox, other Gecko */,
-          boxSizing: "border - box" /* Opera/IE 8+ */,
-          height: "50px",
+          margin: "15px auto",
+          width: "351.1px",
+          height: "56px",
+          webkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
+          mozBoxSing: "content - box" /* Firefox, other Gecko */,
+          boxSizing: "content - box" /* Opera/IE 8+ */,
         }}
+        onChange={updateDate}
         type="date"
+        value={date}
       ></input>
       {/* <DatePicker
         label="Pick the date"
-        onChange={updateDate}
         onClick={clearTheFeedback}
-        value={date}
         className="datePicker"
         sx={{
           margin: 3,
@@ -128,14 +130,14 @@ export default function AddExpense({
         value={price}
         onChange={updatePrice}
         onClick={clearThePriceField}
-        sx={{ margin: 3, marginTop: 0 }}
+        sx={{ margin: "15px" }}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">{userCurrency}</InputAdornment>
           ),
         }}
       />
-      <FormControl sx={{ margin: 3, marginTop: 0 }}>
+      <FormControl sx={{ margin: "15px" }}>
         <InputLabel id="category-label">Category</InputLabel>
         <Select
           labelId="category-label"
@@ -178,7 +180,7 @@ export default function AddExpense({
         helperText="This field is optional"
         value={label}
         onChange={updateLabel}
-        sx={{ margin: 3, marginTop: 0 }}
+        sx={{ margin: "15px" }}
       />
       {!priceIsValid && (
         <Alert

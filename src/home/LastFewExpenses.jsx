@@ -18,25 +18,7 @@ export default function LastFewExpenses({
 }) {
   const rows = [];
   expenseList.forEach((element) => {
-    const day = element.date["$D"];
-    const monthArr = [
-      "Jan",
-      "Feb",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-    const month = element.date["$M"];
-    const monthName = monthArr[month];
-    const year = element.date["$y"];
-    const fullDate = day + " " + monthName + " " + year;
+    const fullDate = element.date;
     const category = element.category;
     const price = element.price + " " + element.currency;
     const label = element.label;
