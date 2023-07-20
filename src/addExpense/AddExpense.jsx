@@ -101,8 +101,8 @@ export default function AddExpense({
         style={{
           textAlign: "left",
           margin: "0 10px",
-          fontSize: "14px",
-          fontFamily: "Helvetica",
+          fontSize: "0.8em",
+          fontFamily: userFont,
         }}
       >
         Date of purchase:
@@ -134,8 +134,8 @@ export default function AddExpense({
         style={{
           textAlign: "left",
           margin: "0 10px",
-          fontSize: "14px",
-          fontFamily: "Helvetica",
+          fontSize: "0.8em",
+          fontFamily: userFont,
         }}
       >
         Price in: {userCurrency}
@@ -169,8 +169,8 @@ export default function AddExpense({
         style={{
           textAlign: "left",
           margin: "0 10px",
-          fontSize: "14px",
-          fontFamily: "Helvetica",
+          fontSize: "0.8em",
+          fontFamily: userFont,
         }}
       >
         Category:
@@ -208,8 +208,8 @@ export default function AddExpense({
         style={{
           textAlign: "left",
           margin: "0 10px",
-          fontSize: "14px",
-          fontFamily: "Helvetica",
+          fontSize: "0.8em",
+          fontFamily: userFont,
         }}
       >
         (Optional) Label:{" "}

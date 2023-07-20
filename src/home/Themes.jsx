@@ -26,9 +26,9 @@ export const lightBlue = createTheme({
       text: "#000000",
     },
     success: {
-      main: "#689f38", // color of the success icon
-      background: "#c5e1a5",
-      text: "#000000",
+      main: "#dcedc8", // color of the success icon
+      background: "#689f38",
+      text: "#ffffff",
     },
   },
   shape: {
@@ -110,6 +110,47 @@ export const simpleLight = createTheme({
       main: "#ffffff", // color of the icon
       background: "#000000",
       text: "#ffffff",
+    },
+  },
+  // sharp edges on buttons
+  shape: {
+    borderRadius: 1,
+  },
+});
+
+export const simpleDark = createTheme({
+  name: "simpleDark",
+  mode: "dark",
+  palette: {
+    tab1: "#F1EBE9",
+    tab2: "#D4CFCD",
+    tab3: "#A19D9C",
+    tab4: "#E0DBDA",
+    primary: {
+      main: "#FFFFFF", // borders and button colors
+      contrastText: "#000000", // text on filled buttons,
+      icon: "#000000",
+    },
+    background: {
+      default: "#2D2E2E",
+    },
+    text: {
+      primary: "#ffffff", // text that shows on the background color
+      settingsLabel: "#000000",
+    },
+    action: {
+      disabledBackground: "#424242",
+      disabled: "#757575",
+    },
+    info: {
+      main: "#ffffff", // color of the icon
+      background: "#616161",
+      text: "#ffffff",
+    },
+    success: {
+      main: "#000000", // color of the icon
+      background: "#ffffff",
+      text: "#000000",
     },
   },
   // sharp edges on buttons
