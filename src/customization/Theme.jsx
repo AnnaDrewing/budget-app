@@ -7,6 +7,7 @@ import {
   simpleDark,
   wine,
   honey,
+  ocean,
 } from "../home/Themes";
 
 export default function Theme({ updateTheme, userTheme }) {
@@ -37,6 +38,10 @@ export default function Theme({ updateTheme, userTheme }) {
       case "honey":
         updateTheme(honey);
         setTheme(honey);
+        break;
+      case "ocean":
+        updateTheme(ocean);
+        setTheme(ocean);
         break;
     }
   };
@@ -84,6 +89,7 @@ export default function Theme({ updateTheme, userTheme }) {
         <option value="simpleDark">Simple Dark</option>
         <option value="wine">Wine (light)</option>
         <option value="honey">Honey (light)</option>
+        <option value="ocean">Ocean (dark)</option>
       </select>
     </>
   );

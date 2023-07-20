@@ -230,3 +230,44 @@ export const honey = createTheme({
     borderRadius: 1,
   },
 });
+
+export const ocean = createTheme({
+  name: "ocean",
+  mode: "dark",
+  palette: {
+    tab1: "#468FAF",
+    tab2: "#2A6F97",
+    tab3: "#014F86",
+    tab4: "#2C7DA0",
+    primary: {
+      main: "#A9D6E5", // borders and button colors
+      contrastText: "#000000", // text on filled buttons,
+      icon: "#ffffff",
+    },
+    background: {
+      default: "#013A63",
+    },
+    text: {
+      primary: "#A9D6E5", // text that shows on the background color
+      settingsLabel: "#ffffff",
+    },
+    action: {
+      disabledBackground: "#263238",
+      disabled: "#546e7a",
+    },
+    info: {
+      main: "#A9D6E5", // color of the icon
+      background: "#01497C",
+      text: "#A9D6E5",
+    },
+    success: {
+      main: "#ffffff", // color of the icon
+      background: "#016316",
+      text: "#ffffff",
+    },
+  },
+  // sharp edges on buttons
+  shape: {
+    borderRadius: 1,
+  },
+});

@@ -109,20 +109,20 @@ export default function LastFewExpenses({
                     sx={{
                       fontFamily: userFont,
                       fontSize: userFontSize,
-                      // color: theme.palette.primary.contrastText,
                     }}
+                    align="left"
                   >
                     How much?
                   </StyledTableCell>
                   <StyledTableCell
                     sx={{ fontFamily: userFont, fontSize: userFontSize }}
-                    align="lefr"
+                    align="left"
                   >
                     What?
                   </StyledTableCell>
                   <StyledTableCell
                     sx={{ fontFamily: userFont, fontSize: userFontSize }}
-                    align="left"
+                    align="right"
                   >
                     When?
                   </StyledTableCell>
