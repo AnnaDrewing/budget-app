@@ -158,3 +158,39 @@ export const simpleDark = createTheme({
     borderRadius: 1,
   },
 });
+
+export const wine = createTheme({
+  name: "wine",
+  mode: "light",
+  palette: {
+    primary: {
+      main: "#4D0B0B", //"#310707", // borders and button colors
+      contrastText: "#ffffff", // text on filled buttons,
+      icon: "#ffffff",
+    },
+    background: {
+      default: "#ffffff",
+    },
+    text: {
+      primary: "#000000", // text that appears directly on the background color
+      settingsLabel: "#ffffff",
+    },
+    tab1: "#861313",
+    tab2: "#6A0F0F",
+    tab3: "#A31717",
+    tab4: "#310707",
+    info: {
+      main: "#4D0B0B", // color of the info  icon
+      background: "#F7E0E0",
+      text: "#310707",
+    },
+    success: {
+      main: "#ffffff", // color of the success icon
+      background: "#4F4E20",
+      text: "#ffffff",
+    },
+  },
+  shape: {
+    borderRadius: 1,
+  },
+});

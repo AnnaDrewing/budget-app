@@ -1,6 +1,12 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { lightBlue, darkBlue, simpleLight, simpleDark } from "../home/Themes";
+import {
+  lightBlue,
+  darkBlue,
+  simpleLight,
+  simpleDark,
+  wine,
+} from "../home/Themes";
 
 export default function Theme({ updateTheme, userTheme }) {
   const [theme, setTheme] = useState(userTheme);
@@ -22,6 +28,10 @@ export default function Theme({ updateTheme, userTheme }) {
       case "simpleDark":
         updateTheme(simpleDark);
         setTheme(simpleDark);
+        break;
+      case "wine":
+        updateTheme(wine);
+        setTheme(wine);
         break;
     }
   };
@@ -67,6 +77,7 @@ export default function Theme({ updateTheme, userTheme }) {
         <option value="darkBlue">Dark Blue</option>
         <option value="simpleLight">Simple Light</option>
         <option value="simpleDark">Simple Dark</option>
+        <option value="wine">Wine (light)</option>
       </select>
     </>
   );
