@@ -68,7 +68,7 @@ export default function CustomizationBar({
           className="navIcon"
           style={{
             backgroundColor: userTheme.palette.tab1,
-            color: userTheme.palette.primary.contrastText,
+            color: userTheme.palette.primary.icon,
           }}
           onClick={toggleCurrencySetting}
         >
@@ -78,7 +78,7 @@ export default function CustomizationBar({
           className="navIcon"
           style={{
             backgroundColor: userTheme.palette.tab2,
-            color: userTheme.palette.primary.contrastText,
+            color: userTheme.palette.primary.icon,
           }}
           onClick={toggleFontFamilySetting}
         >
@@ -88,7 +88,7 @@ export default function CustomizationBar({
           className="navIcon"
           style={{
             backgroundColor: userTheme.palette.tab3,
-            color: userTheme.palette.primary.contrastText,
+            color: userTheme.palette.primary.icon,
           }}
           onClick={toggleFontSizeSetting}
         >
@@ -98,7 +98,7 @@ export default function CustomizationBar({
           className="navIcon"
           style={{
             backgroundColor: userTheme.palette.tab4,
-            color: userTheme.palette.primary.contrastText,
+            color: userTheme.palette.primary.icon,
           }}
           onClick={toggleThemeSetting}
         >

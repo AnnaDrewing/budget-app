@@ -35,6 +35,7 @@ export default function FontSize({ updateFontSize, userFontSize, userFont }) {
           textAlign: "left",
           fontSize: "14px",
           fontFamily: "Helvetica",
+          color: theme.palette.text.settingsLabel,
         }}
       >
         Font size: {fontSize} px
@@ -49,12 +50,12 @@ export default function FontSize({ updateFontSize, userFontSize, userFont }) {
         value={fontSize}
         onChange={handleChange}
         style={{
-          webkitAppearance: "none",
+          WebkitAppearance: "none",
           background: theme.palette.primary.main,
           margin: "15px auto",
           height: "10px",
           border: "1px solid",
-          borderColor: theme.palette.text.primary,
+          borderColor: theme.palette.text.settingsLabel,
           borderRadius: "5px",
         }}
       ></input>

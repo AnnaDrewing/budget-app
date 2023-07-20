@@ -120,8 +120,8 @@ export default function AddExpense({
           padding: "5px",
           width: "351.1px",
           height: "56px",
-          webkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
-          mozBoxSing: "content - box" /* Firefox, other Gecko */,
+          WebkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
+          MozBoxSing: "content - box" /* Firefox, other Gecko */,
           boxSizing: "content - box" /* Opera/IE 8+ */,
         }}
         onChange={updateDate}
@@ -159,8 +159,8 @@ export default function AddExpense({
           padding: "5px",
           width: "351.1px",
           height: "56px",
-          webkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
-          mozBoxSing: "content - box" /* Firefox, other Gecko */,
+          WebkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
+          MozBoxSing: "content - box" /* Firefox, other Gecko */,
           boxSizing: "content - box" /* Opera/IE 8+ */,
         }}
       ></input>
@@ -193,8 +193,8 @@ export default function AddExpense({
           padding: "5px",
           width: "351.1px",
           height: "56px",
-          webkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
-          mozBoxSing: "content - box" /* Firefox, other Gecko */,
+          WebkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
+          MozBoxSing: "content - box" /* Firefox, other Gecko */,
           boxSizing: "content - box" /* Opera/IE 8+ */,
         }}
       >
@@ -232,8 +232,8 @@ export default function AddExpense({
           padding: "5px",
           width: "351.1px",
           height: "56px",
-          webkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
-          mozBoxSing: "content - box" /* Firefox, other Gecko */,
+          WebkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
+          MozBoxSing: "content - box" /* Firefox, other Gecko */,
           boxSizing: "content - box" /* Opera/IE 8+ */,
         }}
       ></input>
@@ -245,6 +245,9 @@ export default function AddExpense({
             fontSize: userFontSize,
             backgroundColor: theme.palette.info.background,
             color: theme.palette.info.text,
+            borderTop: "3px solid",
+            borderBottom: "3px solid",
+            borderColor: theme.palette.primary.main,
           }}
           severity="info"
         >
@@ -256,6 +259,7 @@ export default function AddExpense({
           sx={{
             fontFamily: userFont,
             fontSize: userFontSize,
+            fontWeight: "700",
             backgroundColor: theme.palette.success.background,
             color: theme.palette.success.text,
           }}

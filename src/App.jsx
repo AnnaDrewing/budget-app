@@ -11,14 +11,14 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-import { lightTheme } from "./home/Themes";
+import { lightBlue } from "./home/Themes";
 
 function App() {
   const [expenseList, setExpenseList] = useState([]);
   const [userFontSize, setUserFontSize] = useState("15px");
   const [userFont, setUserFont] = useState("Arial");
   const [userCurrency, setUserCurency] = useState("€");
-  const [userTheme, setUserTheme] = useState(lightTheme);
+  const [userTheme, setUserTheme] = useState(lightBlue);
 
   const addExpense = (date, category, price, currency, label) => {
     setExpenseList((oldExpenseList) => [

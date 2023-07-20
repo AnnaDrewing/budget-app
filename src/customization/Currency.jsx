@@ -20,6 +20,7 @@ export default function Currency({ updateCurrency, userCurrency }) {
           margin: "0 10px",
           fontSize: "14px",
           fontFamily: "Helvetica",
+          color: theme.palette.text.settingsLabel,
         }}
       >
         Currency:{" "}
@@ -42,8 +43,8 @@ export default function Currency({ updateCurrency, userCurrency }) {
           marginTop: "5px",
           padding: "5px",
           height: "40px",
-          webkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
-          mozBoxSing: "content - box" /* Firefox, other Gecko */,
+          WebkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
+          MozBoxSing: "content - box" /* Firefox, other Gecko */,
           boxSizing: "content - box" /* Opera/IE 8+ */,
         }}
       >

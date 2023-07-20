@@ -6,7 +6,3 @@
     justify-content: space-between;
     height: 100%;
 }
-
-.MuiDateCalendar-root, .MuiDateCalendar-monthContainer, .MuiPickersFadeTransitionGroup-root, .MuiDayCalendar-header, .css-fex7nw-MuiButtonBase-root-MuiPickersDay-root{
-    /* background-color: rgb(160, 160, 160); */
-}

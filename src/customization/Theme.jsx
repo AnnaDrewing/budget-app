@@ -1,17 +1,24 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { lightTheme, darkTheme } from "../home/Themes";
+import { lightBlue, darkBlue, simpleLight } from "../home/Themes";
 
 export default function Theme({ updateTheme, userTheme }) {
   const [theme, setTheme] = useState(userTheme);
 
   const handleChange = (evt) => {
-    if (evt.target.value === "lightTheme") {
-      updateTheme(lightTheme);
-      setTheme(lightTheme);
-    } else {
-      updateTheme(darkTheme);
-      setTheme(darkTheme);
+    switch (evt.target.value) {
+      case "lightBlue":
+        updateTheme(lightBlue);
+        setTheme(lightBlue);
+        break;
+      case "darkBlue":
+        updateTheme(darkBlue);
+        setTheme(darkBlue);
+        break;
+      case "simpleLight":
+        updateTheme(simpleLight);
+        setTheme(simpleLight);
+        break;
     }
   };
 
@@ -24,6 +31,7 @@ export default function Theme({ updateTheme, userTheme }) {
           margin: "0 10px",
           fontSize: "14px",
           fontFamily: "Helvetica",
+          color: theme.palette.text.settingsLabel,
         }}
       >
         Theme:{" "}
@@ -46,13 +54,14 @@ export default function Theme({ updateTheme, userTheme }) {
           marginTop: "5px",
           padding: "5px",
           height: "40px",
-          webkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
-          mozBoxSing: "content - box" /* Firefox, other Gecko */,
+          WebkitBoxSizing: "content - box " /* Safari/Chrome, other WebKit */,
+          MozBoxSing: "content - box" /* Firefox, other Gecko */,
           boxSizing: "content - box" /* Opera/IE 8+ */,
         }}
       >
-        <option value="lightTheme">Light</option>
-        <option value="darkTheme">Dark</option>
+        <option value="lightBlue">Light Blue</option>
+        <option value="darkBlue">Dark Blue</option>
+        <option value="simpleLight">Simple Light</option>
       </select>
     </>
   );
