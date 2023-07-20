@@ -8,6 +8,7 @@ import {
   wine,
   honey,
   ocean,
+  forest,
 } from "../home/Themes";
 
 export default function Theme({ updateTheme, userTheme }) {
@@ -42,6 +43,10 @@ export default function Theme({ updateTheme, userTheme }) {
       case "ocean":
         updateTheme(ocean);
         setTheme(ocean);
+        break;
+      case "forest":
+        updateTheme(forest);
+        setTheme(forest);
         break;
     }
   };
@@ -90,6 +95,7 @@ export default function Theme({ updateTheme, userTheme }) {
         <option value="wine">Wine (light)</option>
         <option value="honey">Honey (light)</option>
         <option value="ocean">Ocean (dark)</option>
+        <option value="forest">Forest (dark)</option>
       </select>
     </>
   );

@@ -271,3 +271,44 @@ export const ocean = createTheme({
     borderRadius: 1,
   },
 });
+
+export const forest = createTheme({
+  name: "forest",
+  mode: "dark",
+  palette: {
+    tab1: "#506040",
+    tab2: "#656D4A",
+    tab3: "#4F583E",
+    tab4: "#5E684A",
+    primary: {
+      main: "#B6AD90", // borders and button colors
+      contrastText: "#000000", // text on filled buttons,
+      icon: "#ffffff",
+    },
+    background: {
+      default: "#333D29",
+    },
+    text: {
+      primary: "#B6AD90", // text that shows on the background color
+      settingsLabel: "#ffffff",
+    },
+    action: {
+      disabledBackground: "#414833",
+      disabled: "#333d29",
+    },
+    info: {
+      main: "#000000", // color of the icon
+      background: "#656d4a",
+      text: "#000000",
+    },
+    success: {
+      main: "#ffffff", // color of the icon
+      background: "#49331d",
+      text: "#ffffff",
+    },
+  },
+  // sharp edges on buttons
+  shape: {
+    borderRadius: 1,
+  },
+});
