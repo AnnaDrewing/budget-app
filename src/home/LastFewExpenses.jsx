@@ -112,19 +112,19 @@ export default function LastFewExpenses({
                       // color: theme.palette.primary.contrastText,
                     }}
                   >
-                    Price
+                    How much?
                   </StyledTableCell>
                   <StyledTableCell
                     sx={{ fontFamily: userFont, fontSize: userFontSize }}
-                    align="right"
+                    align="lefr"
                   >
-                    Category/Label
+                    What?
                   </StyledTableCell>
                   <StyledTableCell
                     sx={{ fontFamily: userFont, fontSize: userFontSize }}
-                    align="right"
+                    align="left"
                   >
-                    Date
+                    When?
                   </StyledTableCell>
                 </TableRow>
               </TableHead>
@@ -136,8 +136,8 @@ export default function LastFewExpenses({
                       "&:last-child td, &:last-child th": { border: 0 },
                     }}
                   >
-                    <StyledTableCell align="right">{row.price}</StyledTableCell>
-                    <StyledTableCell align="right">
+                    <StyledTableCell align="left">{row.price}</StyledTableCell>
+                    <StyledTableCell align="left">
                       {row.category}
                     </StyledTableCell>
                     <StyledTableCell align="right">{row.date}</StyledTableCell>

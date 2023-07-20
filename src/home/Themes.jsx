@@ -194,3 +194,39 @@ export const wine = createTheme({
     borderRadius: 1,
   },
 });
+
+export const honey = createTheme({
+  name: "honey",
+  mode: "light",
+  palette: {
+    primary: {
+      main: "#F9A600", //"#310707", // borders and button colors
+      contrastText: "#000000", // text on filled buttons,
+      icon: "#000000",
+    },
+    background: {
+      default: "#ffffff",
+    },
+    text: {
+      primary: "#000000", // text that appears directly on the background color
+      settingsLabel: "#000000",
+    },
+    tab1: "#FFC043",
+    tab2: "#FF9D33",
+    tab3: "#FFAF0F",
+    tab4: "#FF9624",
+    info: {
+      main: "#F9A600", // color of the info  icon
+      background: "#FFDA91",
+      text: "#000000",
+    },
+    success: {
+      main: "#000000", // color of the success icon
+      background: "#BDBDC1",
+      text: "#000000",
+    },
+  },
+  shape: {
+    borderRadius: 1,
+  },
+});
